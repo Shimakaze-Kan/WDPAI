@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style-mobile.css">
+
     <title>REGISTRATION PAGE</title>
 
 </head>
 <body>
     <div class="container">
-        <div class="registration-container">
+        <div class="registration-container" id="registration-container">
             <form class="register">
                 <h2 class="register-text">REGISTRATION</h2>
               

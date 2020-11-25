@@ -14,4 +14,9 @@ class DefaultController extends AppController
         $this->render('featured');
 
     }
+
+    public function registration()
+    {
+        $this->render('registration');
+    }
 }

@@ -41,8 +41,3 @@ flex-direction: column;
 justify-content: space-between;
 }
 
-.social-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}

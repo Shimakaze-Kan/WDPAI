@@ -2,15 +2,35 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/questions.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style-mobile.css">
+    <link rel="stylesheet" type="text/css" href="public/css/questions-mobile.css">
 
-    <script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script>
+
+    <!--<script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <title>LOGIN PAGE</title>
 
-</head>
+</head>   
+<script>
+    var state = false;
+function openNav() {
+    if(state)
+    {
+        document.getElementById("slide-nav").style.visibility = "collapse";
+        document.querySelectorAll("main")[0].style.filter = "none";
+        state = false;
+    }
+    else{
+        state = true;
+        document.getElementById("slide-nav").style.visibility = "visible";
+        document.querySelectorAll("main")[0].style.filter = "blur(3px) grayscale(1)";
+    }
+}
+</script>
 <body>
     <div class="base-container">
-      <nav>
-          <div class="small-logo">
+      <nav id="slide-nav">
+          <div id="small-logo" class="small-logo">
                 CONNTLY
             </div>
         <ul>
@@ -44,6 +64,7 @@
       <main>
           <header>
             <div class="title-bar">
+            <i class="fas fa-bars" id="burger" onclick="openNav()"></i>
                 FEATURED
             </div>
           </header>
