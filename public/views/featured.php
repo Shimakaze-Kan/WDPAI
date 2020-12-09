@@ -29,38 +29,7 @@ function openNav() {
 </script>
 <body>
     <div class="base-container">
-      <nav id="slide-nav">
-          <div id="small-logo" class="small-logo">
-                CONNTLY
-            </div>
-        <ul>
-            <li>                
-                <a href="#" class="button">
-                    <i class="fas fa-star"></i>
-                    FEATURED</a>
-            </li>
-            <li>                
-                <a href="#" class="button">
-                    <i class="far fa-clock"></i>
-                    RECENT</a>
-            </li>
-            <li>                
-                <a href="#" class="button">
-                    <i class="fas fa-user"></i>
-                    ACCOUNT</a>
-            </li>
-            <li>                
-                <a href="#" class="button">
-                    <i class="fas fa-plus"></i>
-                    ADD</a>
-            </li>
-            <li>                
-                <a href="#" class="button">
-                    <i class="fas fa-door-open"></i>
-                    LOGOUT</a>
-            </li>
-        </ul>
-      </nav>
+        <?php include("nav.php"); ?>
       <main>
           <header>
             <div class="title-bar">

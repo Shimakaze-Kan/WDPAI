@@ -19,4 +19,9 @@ class DefaultController extends AppController
     {
         $this->render('registration');
     }
+
+    public function tea()
+    {
+        $this->render('tea');
+    }
 }
