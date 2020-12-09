@@ -295,12 +295,10 @@ countries.forEach(function(item){
     countries["ZW"] = "Zimbabwe";*/
 
     var names = [];
-    names["PL"] = "herbata";
-    names["GB"] = "Tea";
 
 
     jQuery(function ($) {
-
+        var countryId;
 
         $('#send-updated-country').click(function (){
             var word = $('#new-word-input').val();
@@ -313,8 +311,9 @@ countries.forEach(function(item){
                 $.ajax({
                     url: "returnConfirm",
                     type: "POST",
-                    data: {value: word},
+                    data: {value: word+" "+countryId},
                     success: function (response) {
+                        names[countryId] = word;
                         showMessage(response == "success");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -326,9 +325,32 @@ countries.forEach(function(item){
             $('.background-shade').slideUp(300);
         });
 
-        $('path').each(function () {
-            if ($(this).attr('id').toUpperCase().substring(0, 2) in names) { $(this).css({ fill: "#ff0000" }); }
-        });
+        //$('#test-button').click(function (){
+            $.ajax({
+                url: "getCountriesData",
+                type: "POST",
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    for(var i in response) {
+                        if(response[i]!=null)
+                            names[i] = response[i];
+                    }
+                    updateValues();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("error"+response);
+                }
+            });
+        //});
+
+        function updateValues() {
+            $('path').each(function () {
+                if ($(this).attr('id').toUpperCase().substring(0, 2) in names) {
+                    $(this).css({fill: "#ff0000"});
+                }
+            });
+        };
 
         var currentMousePos = { x: -1, y: -1 };
         $(document).mousemove(function (event) {
@@ -339,6 +361,7 @@ countries.forEach(function(item){
         $('path').click(function () {
             var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
             //alert(countries[country]);
+            countryId=country;
             $('#country-name').text(countries[country].toUpperCase());
             jQuery(this).css({ fill: "#ff0000" });
             $('#new-word-input').val(names[country]);

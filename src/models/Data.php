@@ -3,15 +3,17 @@
 
 class Data
 {
-    private $data;
+    private $countryCode;
+    private $value;
 
     public function __construct(string $data)
     {
-        $this->data = $data;
+        $this->countryCode = explode(' ',$data)[1];
+        $this->value = explode(' ',$data)[0];
     }
 
     public function getData()
     {
-        return $this->data;
+        return [$this->countryCode,$this->value];
     }
 }

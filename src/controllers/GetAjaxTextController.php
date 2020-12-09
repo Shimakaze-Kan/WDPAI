@@ -2,12 +2,14 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Data.php';
+require_once __DIR__.'/../repository/TeaRepository.php';
 class GetAjaxTextController extends AppController
 {
     private $dataModel;
 
     public function returnConfirm()
     {
+
         if(!$this->isPost())
         {
             return $this->render('tea');
@@ -21,11 +23,43 @@ class GetAjaxTextController extends AppController
             return;
         }
 
-
         $this->dataModel = new Data($value);
 
-        $this->writeData($this->dataModel->getData());
+        $teaRepository = new TeaRepository();
+        $result = $teaRepository->updateRecord($this->dataModel->getData()[0],$this->dataModel->getData()[1]);
+
+        if($result==false)
+        {
+            echo 'failure';
+            return;
+        }
+        //$this->writeData($this->dataModel->getData()[0]);
+
         echo 'success';
+    }
+
+    public function getCountriesData()
+    {
+        if(!$this->isPost())
+        {
+            return $this->render('tea');
+        }
+
+        $teaRepository = new TeaRepository();
+        $result = $teaRepository->getData();
+
+        if($result==false)
+        {
+            echo 'failure';
+            return;
+        }
+
+        echo json_encode($result);
+        /*echo var_dump($result);
+        foreach ($result as $key => $value)
+        {
+            echo $key." ".$value."\n";
+        }*/
     }
 
     function writeData(string $data)
