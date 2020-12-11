@@ -4,6 +4,7 @@ require_once 'src/controllers/DefaultController.php';
 require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/GetTextController.php';
 require_once 'src/controllers/GetAjaxTextController.php';
+require_once 'src/controllers/TopicController.php';
 
 class Routing
 {

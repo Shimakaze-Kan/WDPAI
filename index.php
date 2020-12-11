@@ -13,6 +13,7 @@ Routing::get('add', 'DefaultController');
 
 Routing::post('returnConfirm', 'GetAjaxTextController');
 Routing::post('getCountriesData', 'GetAjaxTextController');
+Routing::post('addTopic', 'TopicController');
 
 Routing::post('login', 'SecurityController');
 
