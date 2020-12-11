@@ -9,6 +9,7 @@ Routing::get('index', 'DefaultController');
 Routing::get('featured', 'DefaultController');
 Routing::get('registration', 'DefaultController');
 Routing::get('tea', 'DefaultController');
+Routing::get('add', 'DefaultController');
 
 Routing::post('returnConfirm', 'GetAjaxTextController');
 Routing::post('getCountriesData', 'GetAjaxTextController');

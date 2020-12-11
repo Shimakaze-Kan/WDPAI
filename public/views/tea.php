@@ -10,6 +10,7 @@
    charset="utf-8"></script>
 
     <script type="text/javascript" src="public/scripts/europe-map.js"></script>
+    <script type="text/javascript" src="public/scripts/menu.js"></script>
 
     <!--<script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">

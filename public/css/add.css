@@ -1,0 +1,52 @@
+.bigfont {
+    font: normal normal bold 2.5em Arial;
+    letter-spacing: 0px;
+    color: #000000B8;
+    padding-top: 0.5em;
+}
+
+.add-container {
+    margin-left: 2em;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.purple-button {
+    text-align: center;
+    font: normal normal bold 1em Arial;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    background: #7A6DCE 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    padding: 0.5em;
+    margin-left: 1em;
+}
+
+.add-container > div {
+    display: flex;
+    flex-direction: row;
+}
+
+input {
+    padding-left: 0.5em;
+}
+
+#title-input {
+    width: 50em !important;
+}
+
+#upload-input {
+    width: 50em !important;
+}
+
+#question-preview {
+    position: absolute;
+    display: none;
+    z-index: 999;
+}
+
+#question-1 {
+    min-width: 400px;
+}
+

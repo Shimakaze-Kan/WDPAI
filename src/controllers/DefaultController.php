@@ -24,4 +24,9 @@ class DefaultController extends AppController
     {
         $this->render('tea');
     }
+
+    public function add()
+    {
+        $this->render('add');
+    }
 }

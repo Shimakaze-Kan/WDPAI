@@ -67,7 +67,7 @@ opacity: 0.98;
     }
 
     nav {
-        visibility: collapse;
+
         width: 100vh;
         transition: 0.5s;
     }

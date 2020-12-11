@@ -12,6 +12,7 @@ section {
     font: normal normal normal 2em Georgia;
 letter-spacing: 0px;
 color: #474747;
+    word-wrap: anywhere;
 }
 
 .questions>div>div>img {

@@ -20,7 +20,7 @@ RECENT</a>
 ACCOUNT</a>
             </li>
             <li>
-                <a href="#" class="button">
+                <a href="<?php echo substr($_SERVER['SERVER_NAME'],0,-1)."add" ?>" class="button">
                     <i class="fas fa-plus"></i>
 ADD</a>
             </li>
