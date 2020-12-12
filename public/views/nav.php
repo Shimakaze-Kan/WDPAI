@@ -25,7 +25,7 @@ ACCOUNT</a>
 ADD</a>
             </li>
             <li>
-                <a href="<?php echo substr($_SERVER['SERVER_NAME'],0,-1)."index" ?>" class="button">
+                <a href="logout" class="button">
                     <i class="fas fa-door-open"></i>
 LOGOUT</a>
             </li>

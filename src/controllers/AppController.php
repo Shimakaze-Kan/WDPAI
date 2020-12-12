@@ -19,6 +19,18 @@ class AppController
         return $this->request === 'POST';
     }
 
+    protected function isCookieSetted(): bool
+    {
+        if(isset($_COOKIE['loginCredentials']) && !empty(isset($_COOKIE['loginCredentials'])))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     protected function render(string $template = null, array  $variables = [])
     {
         $templatePath = 'public/views/'.$template.'.php';

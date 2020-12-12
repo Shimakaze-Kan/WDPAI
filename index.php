@@ -16,5 +16,6 @@ Routing::post('getCountriesData', 'GetAjaxTextController');
 Routing::post('addTopic', 'TopicController');
 
 Routing::post('login', 'SecurityController');
+Routing::post('logout', 'SecurityController');
 
 Routing::run($path);

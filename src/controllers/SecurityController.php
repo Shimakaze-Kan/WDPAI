@@ -31,12 +31,24 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['wrong email']]);
         }
 
-        if($password !== $user->getPassword())
+        if(!password_verify($password,  $user->getPassword()))
         {
             return $this->render('login', ['messages' => ['wrong password']]);
         }
 
+        $userRepository->changeUserActiveStatus($email, true);
+
+
+        setcookie("loginCredentials", $email, time() + 7200);
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/featured");
+    }
+
+    public function logout()
+    {
+        setcookie("loginCredentials", "", time() - 3600);
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/index");
     }
 }

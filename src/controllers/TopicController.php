@@ -15,6 +15,11 @@ class TopicController extends AppController
 
     public function addTopic()
     {
+        if(!$this->isCookieSetted())
+        {
+            return $this->render('login');
+        }
+
         if(!$this->isPost())
         {
             return $this->render('add');

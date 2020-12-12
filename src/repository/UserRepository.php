@@ -28,4 +28,18 @@ class UserRepository extends Repository
         );
     }
 
+    public function changeUserActiveStatus(string $email,bool $state)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users SET active=:state WHERE email=:email
+        ');
+
+        $stmt->bindParam(':state', $state, PDO::PARAM_BOOL);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
 }
