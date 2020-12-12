@@ -24,9 +24,29 @@
             </div>
           </header>
           <section class="questions">
-            <div id="question-1">
-                
-                <div>
+
+                    <?php
+                    $topicRepository = new TopicRepository();
+                    $featured = $topicRepository->getFeaturedTopicsIds();
+
+                    for ($i=0; $i<count($featured); $i++) {
+                        $topic = $topicRepository->getTopic($featured[$i]);
+
+                        echo '<div id="question-'.($i+1).'">'.
+                            '<div>'.
+                            '<div class="title">' . $topic->getTitle() . '</div>' .
+                            '<img src="' . $topic->getImgUrl() . '">' .
+
+                            '<div class="social-section">' .
+                            '<i class="fas fa-heart">'.$topic->getLike().'</i>' .
+                            '<i class="fas fa-share-square">'.$topic->getDislike().'</i>' .
+                            '</div> </div></div>';
+                    }
+                    ?>
+                    <!--
+                    <div id="question-1">
+
+                    <div>
                     <div class="title">‘Tea’ in European languages</div>
                     <img src="public/img/uploads/xhlu3k3h.bmp">
                     
@@ -69,7 +89,7 @@
                     </div>
                 </div>
             </div>
-          
+            -->
         </section>
       </main>
     </div>

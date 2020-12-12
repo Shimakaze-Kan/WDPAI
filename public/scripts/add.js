@@ -54,7 +54,7 @@ $('#preview').mouseover(function (){
     $('#submit-button').click(function (){
         if($('input[name="checkbox"]').prop('checked'))
         {
-            const title_text = $('#title-input').val();
+            var title_text = $('#title-input').val();
             var upload_text = $('#upload-input').val();
 
             if(title_text.length > 50)
@@ -71,10 +71,18 @@ $('#preview').mouseover(function (){
                 $.ajax({
                     url: "addTopic",
                     type: "POST",
-                    data: {url: upload_text},
+                    data: {title: title_text, url: upload_text},
                     success: function (response) {
+                        if(response == 'failure')
+                        {
+                            showMessage(true);
+                        }
+                        else
+                        {
+                            var url = response.substring(8, response.length);
+                            window.location=url;
+                        }
 
-                        showMessage(response == "success");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         showMessage(false);
