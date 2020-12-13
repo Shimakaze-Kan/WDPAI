@@ -39,7 +39,7 @@ class TopicRepository extends Repository
             VALUES (?,?,?,?,?)
         ');
 
-        $assigned_by = 1;
+        $assigned_by = $_SESSION['user_id'];
         $id_topic_details = 2;
 
         $stmt->execute([

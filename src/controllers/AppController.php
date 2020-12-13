@@ -6,6 +6,7 @@ class AppController
 
     public function __construct()
     {
+        session_start();
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
@@ -21,6 +22,7 @@ class AppController
 
     protected function isCookieSetted(): bool
     {
+        return true; //TMP
         if(isset($_COOKIE['loginCredentials']) && !empty(isset($_COOKIE['loginCredentials'])))
         {
             return true;

@@ -15,7 +15,7 @@ FEATURED</a>
 RECENT</a>
             </li>
             <li>
-                <a href="#" class="button">
+                <a href="<?php echo substr($_SERVER['SERVER_NAME'],0,-1)."profile" ?>" class="button">
                     <i class="fas fa-user"></i>
 ACCOUNT</a>
             </li>

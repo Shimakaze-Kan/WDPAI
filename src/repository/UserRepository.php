@@ -24,8 +24,59 @@ class UserRepository extends Repository
 
         return new User(
             $user['email'],
-            $user['password']
+            $user['password'],
+            $user['id']
         );
+    }
+
+    public function getUsersDetails(int $id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            select country, about, avatar_url from users_details
+            where id=(select id_user_details from users where id=:id)
+        ');
+
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+        $details = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $details;
+    }
+
+    public function addUser(User $user)
+    {
+        $date = new DateTime();
+
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.users_details (country)
+            VALUES (:country)
+            RETURNING id;
+        ');
+
+        $country = "Finland";
+        $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+        $result = $stmt->execute();
+        $user_details = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user_details_id = $user_details['id'];
+
+        if($result==false)
+        {
+            return "błąd przy user details".var_dump($result);
+        }
+
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.users (email,password,id_user_details,created_at)
+            VALUES (?,?,?,?)
+        ');
+
+        $result = $stmt->execute([
+          $user->getEmail(),
+          password_hash($user->getPassword(),PASSWORD_BCRYPT),
+            $user_details_id,
+            $date->format("Y-m-d H:i:s")]
+        );
+
+        return "błąd przy dodaniu usera".var_dump($result);
+
     }
 
     public function changeUserActiveStatus(string $email,bool $state)

@@ -9,7 +9,17 @@
 <body>
     <div class="container">
         <div class="registration-container" id="registration-container">
-            <form class="register">
+            <form class="register" action="registration" method="POST">
+                <div class="message">
+                    <?php
+                    if(isset($messages))
+                    {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
                 <h2 class="register-text">REGISTRATION</h2>
               
                         <div class="login-caption-container">
@@ -17,10 +27,10 @@
                             <input name="email" type="text" placeholder="email@email.com">
                         </div>
                   
-                        <div class="login-caption-container">
+                        <!--<div class="login-caption-container">
                             USERNAME
                             <input name="username" type="text" placeholder="marik1234">
-                        </div>
+                        </div>-->
                   
                         <div class="login-caption-container">
                             PASSWORD
@@ -29,7 +39,7 @@
                  
                         <div class="login-caption-container">
                             REPEAT PASSWORD
-                            <input name="password" type="password" placeholder="password">
+                            <input <!--name="password"--> type="password" placeholder="password">
                         </div>
                    
                         <div class="login-caption-container">

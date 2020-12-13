@@ -306,3 +306,10 @@ margin-bottom: 0.5em;
 .fas.fa-bars {
     visibility: hidden;
 }
+
+.bigfont {
+    font: normal normal bold 2.5em Arial;
+    letter-spacing: 0px;
+    color: #000000B8;
+    padding-top: 0.5em;
+}
