@@ -15,6 +15,7 @@ function showMessage(result)
 
     var countries = [];
 
+
 $.getJSON( "public/json/data_json.json", function( data ) {
     $.each( data, function( key, val ) {
         countries[val.Code] = val.Name;
@@ -33,6 +34,7 @@ countries.forEach(function(item){
     var names = [];
 
     jQuery(function ($) {
+
         var countryId;
 
         $('#send-updated-country').click(function (){
@@ -43,16 +45,21 @@ countries.forEach(function(item){
                 showMessage(false);
             }
             else {
+                const urlParams = new URLSearchParams(window.location.search);
+                const topicId = urlParams.get('id');
+
                 $.ajax({
                     url: "returnConfirm",
                     type: "POST",
-                    data: {value: word+" "+countryId},
+                    data: {id: countryId, value: word, topicId: topicId},
                     success: function (response) {
                         names[countryId] = word;
                         showMessage(response == "success");
+                        console.log("suces "+response);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         showMessage(false);
+                        console.log("fail "+response);
                     }
                 });
             }
@@ -61,10 +68,14 @@ countries.forEach(function(item){
         });
 
         //$('#test-button').click(function (){
+        const urlParams = new URLSearchParams(window.location.search);
+        const topicId = urlParams.get('id');
+        const title = urlParams.get('title');
+        $('#title-text').text(title);
             $.ajax({
                 url: "getCountriesData",
                 type: "POST",
-                data: {},
+                data: {id: topicId},
                 dataType: "json",
                 success: function (response) {
                     for(var i in response) {

@@ -10,6 +10,7 @@
     <!--<script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <script type="text/javascript" src="public/scripts/menu.js"></script>
+    <script type="text/javascript" src="public/scripts/featured.js"></script>
     <title>LOGIN PAGE</title>
 
 </head>
@@ -29,10 +30,11 @@
                     $topicRepository = new TopicRepository();
                     $featured = $topicRepository->getFeaturedTopicsIds();
 
+
                     for ($i=0; $i<count($featured); $i++) {
                         $topic = $topicRepository->getTopic($featured[$i]);
 
-                        echo '<div id="question-'.($i+1).'">'.
+                        echo '<div id="question-'.$featured[$i].'">'.
                             '<div>'.
                             '<div class="title">' . $topic->getTitle() . '</div>' .
                             '<img src="' . $topic->getImgUrl() . '">' .

@@ -34,20 +34,34 @@ class TopicRepository extends Repository
     {
         $date = new DateTime();
 
+        /*$stmt = $this->database->connect()->prepare('
+            INSERT INTO public.topics_details (country_code, value, modified_at)
+            VALUES (?,?,?)
+            RETURNING id;
+        ');
+        $stmt->execute([
+           "NN",
+           "NN",
+            $date->format("Y-m-d H:i:s")
+        ]);
+
+        $topic_details = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id_topic_details = $topic_details['id'];*/
+
+
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO topics (title, img_url, id_assigned_by, created_at, id_topic_details) 
-            VALUES (?,?,?,?,?)
+            INSERT INTO topics (title, img_url, id_assigned_by, created_at) 
+            VALUES (?,?,?,?)
         ');
 
         $assigned_by = $_SESSION['user_id'];
-        $id_topic_details = 2;
 
         $stmt->execute([
           $topic->getTitle(),
           $topic->getImgUrl(),
             $assigned_by,
-            $date->format('Y-m-d'),
-            $id_topic_details
+            $date->format('Y-m-d')//,
+            //$id_topic_details
         ]);
     }
 

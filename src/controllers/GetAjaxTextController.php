@@ -16,8 +16,11 @@ class GetAjaxTextController extends AppController
         }
 
         $value = $_POST['value'];
+        $countryId = $_POST['id'];
+        $topicId = $_POST['topicId'];
 
-        if($value=='')
+
+        if($value=='' || $countryId=='' || $topicId=='')
         {
             echo 'failure';
             return;
@@ -26,7 +29,7 @@ class GetAjaxTextController extends AppController
         $this->dataModel = new Data($value);
 
         $teaRepository = new TeaRepository();
-        $result = $teaRepository->updateRecord($this->dataModel->getData()[0],$this->dataModel->getData()[1]);
+        $result = $teaRepository->updateRecord($countryId,$value,$topicId);
 
         if($result==false)
         {
@@ -45,8 +48,9 @@ class GetAjaxTextController extends AppController
             return $this->render('tea');
         }
 
+        $id = $_POST['id'];
         $teaRepository = new TeaRepository();
-        $result = $teaRepository->getData();
+        $result = $teaRepository->getData($id);
 
         if($result==false)
         {
