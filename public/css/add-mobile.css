@@ -1,0 +1,12 @@
+@media only screen and (max-device-width: 420px)
+{
+    .preview-container {
+        display: none !important;
+    }
+
+    button {
+        font: normal normal bold 1.5em Arial;
+        padding: 0.4em;
+    }
+
+}

@@ -1,0 +1,44 @@
+.social-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media only screen and (max-device-width: 420px)
+{
+    header {
+        border: 3px solid #707070;
+    }
+    .title {
+        font: normal normal normal 1.5em Georgia;
+    }
+
+    .title-bar {
+        font: normal normal bold 2em Arial;
+    }
+
+    .questions > div {
+            height: auto;
+            border: 3px solid #95989A;
+            border-radius: 20px 20px 0px 20px;
+        }
+    
+    .questions div div {
+        margin: 0.5em;
+    }
+
+    .questions {
+        grid-gap: 2em;
+padding: 1.5em;
+grid-template-columns: repeat(1, 1fr);
+border: 0px;
+    }
+
+    img {
+        margin: auto;
+    }
+
+    .questions > div > div > img {
+        border-radius: 18px;
+    }
+}

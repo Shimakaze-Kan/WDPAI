@@ -1,0 +1,81 @@
+path:hover,
+circle:hover {
+    stroke: lime !important;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    fill: #002868 !important;
+    cursor: pointer;
+}
+
+#DivToShow {
+    display: none;
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 0.3em;
+    padding: 0.5em;
+    z-index: 999;
+}
+
+.map-container {
+    height: calc(100% - 2.9em - 2px);
+    position: relative;
+    z-index: 99;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+#country-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font: normal normal normal 1em Rubik;
+}
+
+#selectDiv {
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+}
+
+#messageboxq {
+    display: none;
+    position: absolute;
+    color: white;
+    background-color: rgba(72, 205, 183, 0.9);
+    border-radius: 0.3em;
+    padding: 0.5em;
+    z-index: 999;
+    font-size: 3em;
+    bottom: 0;
+    right: 0;
+}
+
+.background-shade {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.enter-data-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 10px #00000029;
+    border: 1px solid #707070;
+    border-radius: 26px 26px 0 26px;
+    opacity: 0.96;
+    min-width: 336px;
+    font: normal normal normal 2em Rubik;
+}
+
+.update-country {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
