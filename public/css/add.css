@@ -6,17 +6,6 @@
     width: 60%;
 }
 
-.purple-button {
-    text-align: center;
-    font: normal normal bold 1em Arial;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    background: #7A6DCE 0% 0% no-repeat padding-box;
-    border-radius: 4px;
-    padding: 0.5em;
-    margin-left: 1em;
-}
-
 .add-container > div {
     display: flex;
     flex-direction: row;

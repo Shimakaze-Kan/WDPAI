@@ -36,6 +36,7 @@ countries.forEach(function(item){
     jQuery(function ($) {
 
         var countryId;
+        var currentPath;
 
         $('#send-updated-country').click(function (){
             var word = $('#new-word-input').val();
@@ -55,11 +56,13 @@ countries.forEach(function(item){
                     success: function (response) {
                         names[countryId] = word;
                         showMessage(response == "success");
-                        console.log("suces "+response);
+                        updateTable(countryId);
+                        currentPath.css({ fill: "#ff0000" });
+                        //console.log("suces "+response);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         showMessage(false);
-                        console.log("fail "+response);
+                        //console.log("fail "+response);
                     }
                 });
             }
@@ -70,7 +73,7 @@ countries.forEach(function(item){
         //$('#test-button').click(function (){
         const urlParams = new URLSearchParams(window.location.search);
         const topicId = urlParams.get('id');
-        const title = urlParams.get('title');
+        const title = urlParams.get('title').split("_").join(" ");
         $('#title-text').text(title);
             $.ajax({
                 url: "getCountriesData",
@@ -109,7 +112,7 @@ countries.forEach(function(item){
             //alert(countries[country]);
             countryId=country;
             $('#country-name').text(countries[country].toUpperCase());
-            jQuery(this).css({ fill: "#ff0000" });
+            currentPath = jQuery(this);
             $('#new-word-input').val(names[country]);
             $('.background-shade').slideDown(300);
         });
@@ -135,6 +138,56 @@ countries.forEach(function(item){
         $('path').mousemove(function () {
             $('#DivToShow').css({ 'top': currentMousePos.y, 'left': currentMousePos.x });
         });
+
+        $('#download-csv-button').click(function ()
+        {
+            let csvContent = "data:text/csv;charset=utf-8,";
+            for(var e in names)
+            {
+                csvContent+="\n"+e+','+names[e];
+            }
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", title+".csv");
+            link.click();
+        });
+
+        function updateTable(action = 'appendAll'){
+            var tbody = $('#myTable').children('tbody');
+            var table = tbody.length ? tbody : $('#myTable');
+
+            if(action=='appendAll') {
+                for (var e in names) {
+                    table.append('<tr><td>' + e + '</td><td>' + countries[e] + '</td><td>' + names[e] + '</td></tr>');
+                }
+            }
+            else
+            {
+                table.append('<tr><td>' + action + '</td><td>' + countries[action] + '</td><td>' + names[action] + '</td></tr>');
+            }
+        };
+
+        $('#show-table-view-button').click(function (){
+
+            if($('#data-table').is(':visible')) {
+                $('#show-table-view-button').text('Show table view');
+                $('#data-table').fadeOut('fast');
+            }
+            else {
+
+                $('#show-table-view-button').text('Close table view');
+
+
+                if($('#myTable').find('tr').length==1) {
+                    updateTable();
+                }
+
+                $('#data-table').fadeIn('fast');
+            }
+        });
+
+
 
     });
 

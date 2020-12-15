@@ -86,4 +86,21 @@ class TopicRepository extends Repository
         return $rows;
     }
 
+    public function getUsersTopics(int $userId)
+    {
+        $stmt = $this->database->connect()->prepare('
+        SELECT title, created_at, id FROM public.topics WHERE id_assigned_by=:userId
+        ');
+
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $rows = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            array_push($rows, ['title' => $row['title'], 'date' => $row['created_at'], 'topicId' => $row['id']]);
+        }
+
+        return $rows;
+    }
+
 }

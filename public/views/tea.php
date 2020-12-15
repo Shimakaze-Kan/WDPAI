@@ -29,6 +29,23 @@
             </div>
         </header>
 
+        <div id="buttons-container">
+        <button id="download-csv-button" class="purple-button">Download data (.csv)</button>
+        <button id="show-table-view-button" class="purple-button">Show table view</button>
+        </div>
+
+        <div id="data-table">
+            <table id="myTable">
+                <tbody>
+                <tr>
+                    <td>Country Code (ISO-3166-1-ALPHA2)</td>
+                    <td>Country Name</td>
+                    <td>Value</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div id="DivToShow"></div>
 
         <div id="messageboxq">

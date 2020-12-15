@@ -32,7 +32,7 @@
                 </div>
                 <div class="login-buttons-container">
                     <button type="submit">LOGIN</button>
-                    <button >SIGN UP</button>
+                    <button type="button" onclick="location.href='registration'">SIGN UP</button>
                 </div>
             </form>    
         </div>

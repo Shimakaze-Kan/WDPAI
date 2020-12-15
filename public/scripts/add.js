@@ -52,12 +52,12 @@ $('#preview').mouseover(function (){
 
 
     $('#submit-button').click(function (){
-        if($('input[name="checkbox"]').prop('checked'))
+        if($('input[name="checkbox"]').prop('checked') || $('#upload-input').val()=="")
         {
             var title_text = $('#title-input').val();
             var upload_text = $('#upload-input').val();
 
-            if(title_text.length > 50)
+            if(title_text.length > 50 || title_text.length==0)
             {
                 $('#title-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
                 showMessage(false);

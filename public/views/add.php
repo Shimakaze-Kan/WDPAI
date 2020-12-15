@@ -17,6 +17,11 @@
     <title>LOGIN PAGE</title>
 
 </head>
+<style>
+    .checkbox {
+        margin: initial;
+    }
+</style>
 <body>
 <div class="base-container">
     <?php include("nav.php"); ?>
@@ -47,7 +52,7 @@
 
             <label class="checkbox">
                 <input name="checkbox" type="checkbox"/>
-                <span>I confirm that I have copyrights to the submitted images</span>
+                <span>I confirm that I have copyrights to the submitted image</span>
             </label>
 
             <div class="submit-button-container">

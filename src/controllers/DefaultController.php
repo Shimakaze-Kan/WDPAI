@@ -16,7 +16,7 @@ class DefaultController extends AppController
     public function featured()
     {
         if(!isset($_SESSION['user_email'])) {
-            return $this->render('index');
+            return $this->render('login');
         }
 
         if(!$this->isCookieSetted())
@@ -39,7 +39,7 @@ class DefaultController extends AppController
     public function tea()
     {
         if(!isset($_SESSION['user_email'])) {
-            return $this->render('index');
+            return $this->render('login');
         }
 
         if(!$this->isCookieSetted())
@@ -52,7 +52,7 @@ class DefaultController extends AppController
     public function add()
     {
         if(!isset($_SESSION['user_email'])) {
-            return $this->render('index');
+            return $this->render('login');
         }
 
         if(!$this->isCookieSetted())
@@ -65,7 +65,7 @@ class DefaultController extends AppController
     public function profile()
     {
         if(!isset($_SESSION['user_email'])) {
-            return $this->render('index');
+            return $this->render('login');
         }
 
         if(!$this->isCookieSetted())
