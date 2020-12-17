@@ -67,7 +67,7 @@ countries.forEach(function(item){
                 });
             }
 
-            $('.background-shade').slideUp(300);
+            $('.background-shade').fadeOut(300);
         });
 
         //$('#test-button').click(function (){
@@ -114,7 +114,8 @@ countries.forEach(function(item){
             $('#country-name').text(countries[country].toUpperCase());
             currentPath = jQuery(this);
             $('#new-word-input').val(names[country]);
-            $('.background-shade').slideDown(300);
+            $('.background-shade').fadeIn(300);
+            $('#new-word-input').focus();
         });
 
         $('path').mouseover(function () {
@@ -187,7 +188,16 @@ countries.forEach(function(item){
             }
         });
 
+        $('#close-enter-data-popup').click(function (){
+           $('.background-shade').fadeOut(300);
+        });
 
+        $('#new-word-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#send-updated-country').click();
+                return false;
+            }
+        });
 
     });
 

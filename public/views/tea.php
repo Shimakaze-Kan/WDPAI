@@ -40,7 +40,7 @@
                 <tr>
                     <td>Country Code (ISO-3166-1-ALPHA2)</td>
                     <td>Country Name</td>
-                    <td>Value</td>
+                    <td>Value <button class="purple-button">ADD NEW</button></td>
                 </tr>
                 </tbody>
             </table>
@@ -67,7 +67,10 @@
                 <span id="country-name"></span>
                 <div class="update-country">
                     <input id="new-word-input" type="text" placeholder="New word" >
+                    <div class="login-buttons-container">
                     <button id="send-updated-country" type="submit" >SEND</button>
+                    <button id="close-enter-data-popup" type="submit" >CLOSE</button>
+                    </div>
                 </div>
             </div>
         </div>
