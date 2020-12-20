@@ -1,0 +1,52 @@
+.minimal-topic-box {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: #FFF;
+    border-radius: 0.4em;
+    border: 0.05em solid #707070;
+    align-items: center;
+}
+
+.img-mininal-box {
+    width: 20%;
+}
+
+.title-mininal-box {
+    width: 60%;
+    text-align: center;
+}
+
+.details-mininal-box {
+    width: 20%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.topic {
+    display: flex;
+    flex-direction: column;
+    font: normal normal normal 1em Rubik;
+    align-items: center;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.responsive-img {
+    height: 3em;
+    border-radius: 0.5em;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.minimal-social-box {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.5em;
+    color: #2DE79B;
+}

@@ -10,7 +10,7 @@ CONNTLY
 FEATURED</a>
             </li>
             <li>
-                <a href="#" class="button">
+                <a href="<?php echo substr($_SERVER['SERVER_NAME'],0,-1)."recent" ?>" class="button">
                     <i class="far fa-clock"></i>
 RECENT</a>
             </li>
