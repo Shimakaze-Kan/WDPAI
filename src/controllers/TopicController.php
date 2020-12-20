@@ -38,7 +38,7 @@ class TopicController extends AppController
             return;
         }
 
-        if(strlen($url)>255)
+        if(strlen($url)>16384)
         {
             echo 'failure';
             return;
@@ -59,5 +59,18 @@ class TopicController extends AppController
         $myfile = fopen("public/uploads/newfile.txt", "w") or die("Unable to open file!");
         fwrite($myfile, $data);
         fclose($myfile);
+    }
+
+    public function deleteTopic()
+    {
+        if($_SESSION['user_role']!='mode') {
+            echo 'failure';
+            return;
+        }
+
+        $id = $_POST['id'];
+        $result = $this->topicRepository->deleteTopic($id);
+
+        echo 'success';
     }
 }

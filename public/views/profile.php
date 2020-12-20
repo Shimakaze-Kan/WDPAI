@@ -16,7 +16,7 @@
 </head>
 <style>
     .bigfont {
-        font: normal normal bold 2.5em Arial;
+        font: normal normal bold 2em Arial;
         letter-spacing: 0px;
         color: #000000B8;
         padding-top: 0.5em;
@@ -42,6 +42,12 @@
             <div id="info-container">
         <span class="bigfont">Email: <?php echo $email ?></span>
         <span class="bigfont">User's ID: <?php echo $id ?></span>
+        <span class="bigfont" <?php if($role=='mode') {echo 'id="rainbow_text_animated">Role: Moderator';}
+        else
+        {
+            echo ">Role: User";
+        }
+        ?></span>
             </div>
             </div>
 

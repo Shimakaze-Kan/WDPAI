@@ -47,9 +47,11 @@ class SecurityController extends AppController
 
         $user_email = $user->getEmail();
         $user_id = $user->getId();
+        $user_role = $user->getRole();
 
         $_SESSION['user_email'] = $user_email;
         $_SESSION['user_id'] = $user_id;
+        $_SESSION['user_role'] = $user_role;
 
         //setcookie("loginCredentials", $email, time() + 7200);
 

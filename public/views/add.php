@@ -21,6 +21,7 @@
     .checkbox {
         margin: initial;
     }
+    }
 </style>
 <body>
 <div class="base-container">

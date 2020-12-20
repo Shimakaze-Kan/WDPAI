@@ -37,7 +37,7 @@ $('#preview').mouseover(function (){
     });
 
     $('#upload-text').mouseover(function (){
-        $('#DivToShow').text('Max URL length: 255 characters');
+        $('#DivToShow').text('Max URL length: 16384 characters');
         var pos = $('#upload-text').offset();
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
@@ -62,7 +62,7 @@ $('#preview').mouseover(function (){
                 $('#title-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
                 showMessage(false);
             }
-            else if(upload_text.length > 255)
+            else if(upload_text.length > 16384)
             {
                 $('#upload-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
                 showMessage(false);

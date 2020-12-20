@@ -34,21 +34,6 @@ class TopicRepository extends Repository
     {
         $date = new DateTime();
 
-        /*$stmt = $this->database->connect()->prepare('
-            INSERT INTO public.topics_details (country_code, value, modified_at)
-            VALUES (?,?,?)
-            RETURNING id;
-        ');
-        $stmt->execute([
-           "NN",
-           "NN",
-            $date->format("Y-m-d H:i:s")
-        ]);
-
-        $topic_details = $stmt->fetch(PDO::FETCH_ASSOC);
-        $id_topic_details = $topic_details['id'];*/
-
-
         $stmt = $this->database->connect()->prepare('
             INSERT INTO topics (title, img_url, id_assigned_by, created_at) 
             VALUES (?,?,?,?)
@@ -60,8 +45,7 @@ class TopicRepository extends Repository
           $topic->getTitle(),
           $topic->getImgUrl(),
             $assigned_by,
-            $date->format('Y-m-d')//,
-            //$id_topic_details
+            $date->format('Y-m-d')
         ]);
     }
 
@@ -106,7 +90,7 @@ class TopicRepository extends Repository
     public function getAllTopic()
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT id, title, img_url, "like", dislike, created_at, email FROM all_topics_view
+            SELECT id, title, img_url, "like", dislike, created_at, email, user_role FROM all_topics_view
         ');
 
         $stmt->execute();
@@ -114,10 +98,22 @@ class TopicRepository extends Repository
         $rows = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             array_push($rows, ['title' => $row['title'], 'date' => $row['created_at'], 'topicId' => $row['id'],
-                'like'=>$row['like'], 'dislike'=>$row['dislike'], 'author'=>$row['email'], 'img_url'=>$row['img_url']]);
+                'like'=>$row['like'], 'dislike'=>$row['dislike'], 'author'=>$row['email'], 'img_url'=>$row['img_url'], 'user_role'=>$row['user_role']]);
         }
 
         return $rows;
+    }
+
+    public  function deleteTopic($id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT delete_topic(:id);
+        ');
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+
+        $result = $stmt->execute();
+
+        return $result;
     }
 
 }

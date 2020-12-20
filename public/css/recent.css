@@ -1,13 +1,19 @@
 .minimal-topic-box {
-    display: flex;
-    flex-direction: row;
     width: 90%;
     margin-top: 1em;
-    padding: 0.5em;
     background-color: #FFF;
     border-radius: 0.4em;
     border: 0.05em solid #707070;
+    display: flex;
+    flex-direction: row;
+}
+
+.action-click-box {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    padding: 0.5em;
 }
 
 .img-mininal-box {
@@ -22,11 +28,16 @@
 }
 
 .details-mininal-box {
+    padding: 0.5em;
     width: 20%;
     text-align: center;
     display: flex;
     flex-direction: column;
     word-break: break-all;
+    background-color: rgba(243, 241, 239, 0.2);
+    border-left-color: black;
+    border-left-style: solid;
+    border-left-width: 0.1em;
 }
 
 .topic {
@@ -52,4 +63,40 @@
     justify-content: space-around;
     margin-top: 0.5em;
     color: #2DE79B;
+}
+
+#messageboxq {
+    display: none;
+    position: absolute;
+    color: white;
+    background-color: rgba(72, 205, 183, 0.9);
+    border-radius: 0.3em;
+    padding: 0.5em;
+    z-index: 999;
+    font-size: 3em;
+    bottom: 0;
+    right: 0;
+}
+
+.action-click-box:hover {
+    background-color: #F8F8FF;
+}
+
+.rainbow_text_animated {
+    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow_animation 6s ease-in-out infinite;
+    background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
 }

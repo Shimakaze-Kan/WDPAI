@@ -14,6 +14,7 @@ Routing::get('profile', 'ProfileController');
 Routing::post('returnConfirm', 'GetAjaxTextController');
 Routing::post('getCountriesData', 'GetAjaxTextController');
 Routing::post('addTopic', 'TopicController');
+Routing::post('deleteTopic', 'TopicController');
 Routing::post('recent', 'RecentController');
 
 Routing::post('login', 'SecurityController');
