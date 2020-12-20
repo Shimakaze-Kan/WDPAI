@@ -75,16 +75,4 @@ class DefaultController extends AppController
         $this->render('profile');
     }
 
-    public function recent()
-    {
-        if(!isset($_SESSION['user_email'])) {
-            return $this->render('login');
-        }
-
-        if(!$this->isCookieSetted())
-        {
-            return $this->render('login');
-        }
-        $this->render('recent');
-    }
 }

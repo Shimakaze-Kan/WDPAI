@@ -103,4 +103,21 @@ class TopicRepository extends Repository
         return $rows;
     }
 
+    public function getAllTopic()
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT id, title, img_url, "like", dislike, created_at, email FROM all_topics_view
+        ');
+
+        $stmt->execute();
+
+        $rows = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            array_push($rows, ['title' => $row['title'], 'date' => $row['created_at'], 'topicId' => $row['id'],
+                'like'=>$row['like'], 'dislike'=>$row['dislike'], 'author'=>$row['email'], 'img_url'=>$row['img_url']]);
+        }
+
+        return $rows;
+    }
+
 }

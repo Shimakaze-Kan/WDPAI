@@ -12,6 +12,8 @@
 
 .img-mininal-box {
     width: 20%;
+    text-align: center;
+    color: #D3D3D3;
 }
 
 .title-mininal-box {
@@ -24,6 +26,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    word-break: break-all;
 }
 
 .topic {

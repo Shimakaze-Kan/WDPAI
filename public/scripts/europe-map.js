@@ -88,7 +88,6 @@ countries.forEach(function(item){
                     updateValues();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("error"+response);
                 }
             });
         //});
