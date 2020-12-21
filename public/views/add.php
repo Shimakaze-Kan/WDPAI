@@ -65,8 +65,8 @@
             <div id="question-1">
 
                 <div>
-                    <div class="title">‘Tea’ in European languages</div>
-                    <img id="img" src="public/img/uploads/xhlu3k3h.bmp">
+                    <div class="title">Topic Title</div>
+                    <img id="img" src="public/img/uploads/No-image.svg">
 
                     <div class="social-section">
                         <i class="fas fa-heart"> 600</i>

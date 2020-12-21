@@ -34,10 +34,16 @@
                     for ($i=0; $i<count($featured); $i++) {
                         $topic = $topicRepository->getTopic($featured[$i]);
 
+                        $image = "public/img/uploads/No-image.svg";
+                        if($topic->getImgUrl()!="")
+                        {
+                            $image = $topic->getImgUrl();
+                        }
+
                         echo '<div id="question-'.$featured[$i].'">'.
                             '<div>'.
                             '<div class="title">' . $topic->getTitle() . '</div>' .
-                            '<img src="' . $topic->getImgUrl() . '">' .
+                            '<img src="' . $image . '">' .
 
                             '<div class="social-section">' .
                             '<i class="fas fa-heart">'.$topic->getLike().'</i>' .
