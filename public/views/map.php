@@ -28,7 +28,7 @@
                 'Tea' in European languages
             </div>
           </header>
-          
+          <div id="shadow-menu">Close</div>
           <div id="DivToShow"></div>
 
           <div id="messageboxq">

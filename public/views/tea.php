@@ -24,11 +24,11 @@
     <main>
         <header>
             <div class="title-bar">
-                <i class="fas fa-bars" id="burger" onclick="openNav()"></i>
+                <i class="fas fa-bars" id="burger"></i>
                 <span id="title-text"></span>
             </div>
         </header>
-
+        <div id="shadow-menu">Close</div>
         <div id="buttons-container">
         <button id="download-csv-button" class="purple-button">Download data (.csv)</button>
         <button id="show-table-view-button" class="purple-button">Show table view</button>

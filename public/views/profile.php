@@ -29,11 +29,11 @@
     <main>
         <header>
             <div class="title-bar">
-                <i class="fas fa-bars" id="burger" onclick="openNav()"></i>
+                <i class="fas fa-bars" id="burger"></i>
                 ACCOUNT
             </div>
         </header>
-
+        <div id="shadow-menu">Close</div>
         <div id="profile-container">
             <div id="profile-content">
                 <div id="avatar-container">

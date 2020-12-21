@@ -20,10 +20,11 @@
       <main>
           <header>
             <div class="title-bar">
-            <i class="fas fa-bars" id="burger" onclick="openNav()"></i>
+            <i class="fas fa-bars" id="burger"></i>
                 FEATURED
             </div>
           </header>
+          <div id="shadow-menu">Close</div>
           <section class="questions">
 
                     <?php

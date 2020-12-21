@@ -313,3 +313,16 @@ margin-bottom: 0.5em;
     color: #000000B8;
     padding-top: 0.5em;
 }
+
+#shadow-menu {
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font: normal normal normal 3em Rubik;
+    z-index: 999;
+}
