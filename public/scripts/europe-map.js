@@ -31,6 +31,8 @@ countries.forEach(function(item){
     box.appendChild(opt);
 });
 
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+
     var names = [];
 
     jQuery(function ($) {
@@ -107,26 +109,29 @@ countries.forEach(function(item){
         });
 
         $('path').click(function () {
-            var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
-            //alert(countries[country]);
-            countryId=country;
-            $('#country-name').text(countries[country].toUpperCase());
-            currentPath = jQuery(this);
-            $('#new-word-input').val(names[country]);
-            $('.background-shade').fadeIn(300);
-            $('#new-word-input').focus();
+            if(!isMobile) {
+                var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
+                //alert(countries[country]);
+                countryId = country;
+                $('#country-name').text(countries[country].toUpperCase());
+                currentPath = jQuery(this);
+                $('#new-word-input').val(names[country]);
+                $('.background-shade').fadeIn(300);
+                $('#new-word-input').focus();
+            }
         });
 
         $('path').mouseover(function () {
-            var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
-            $('#country-text').text(countries[country]);
+            if(!isMobile) {
+                var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
+                $('#country-text').text(countries[country]);
 
 
-            if ($(this).attr('id').toUpperCase().substring(0, 2) in names) {
-                $('#DivToShow').css({ 'top': currentMousePos.y, 'left': currentMousePos.x }).fadeIn('fast');
-                $('#DivToShow').text(names[country]);
+                if ($(this).attr('id').toUpperCase().substring(0, 2) in names) {
+                    $('#DivToShow').css({'top': currentMousePos.y, 'left': currentMousePos.x}).fadeIn('fast');
+                    $('#DivToShow').text(names[country]);
+                }
             }
-
 
         });
 

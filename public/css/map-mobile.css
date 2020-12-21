@@ -1,0 +1,16 @@
+@media only screen and (max-device-width: 420px)
+{
+    .map-container {
+        height: 40%;
+        position: relative;
+        z-index: 1;
+    }
+
+    #buttons-container {
+        z-index: 2;
+    }
+
+    #data-table {
+        z-index: 2;
+    }
+}

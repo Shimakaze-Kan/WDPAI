@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style-mobile.css">
     <link rel="stylesheet" type="text/css" href="public/css/questions-mobile.css">
     <link rel="stylesheet" type="text/css" href="public/css/map.css">
+    <link rel="stylesheet" type="text/css" href="public/css/map-mobile.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
             charset="utf-8"></script>
 
