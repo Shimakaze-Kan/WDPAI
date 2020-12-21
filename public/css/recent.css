@@ -100,3 +100,8 @@
         background-position: 100% 0;
     }
 }
+
+.stop-timer-button {
+    display: none;
+    color: #2DE79B;
+}

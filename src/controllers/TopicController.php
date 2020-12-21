@@ -63,6 +63,11 @@ class TopicController extends AppController
 
     public function deleteTopic()
     {
+        if(!$this->isPost())
+        {
+            return $this->render('login');
+        }
+
         if($_SESSION['user_role']!='mode') {
             echo 'failure';
             return;

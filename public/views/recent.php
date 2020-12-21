@@ -59,57 +59,11 @@
 
                 if($isMode)
                 {
-                    echo '<div id="delete-'.$value['topicId'].'" style="color: red;background-color: #F8F8F8;margin-top: inherit;"><i class="fas fa-trash-alt" ></i ></div >';
+                    echo '<div id="delete-'.$value['topicId'].'" style="color: red;background-color: rgba(243, 241, 239, 0.2);margin-top: inherit;width: 5%;display: flex;flex-direction: column;"><span class="timer-span" id="timer-'.$value['topicId'].'"></span><span class="stop-timer-button" id="stop-'.$value['topicId'].'">stop</span> <div id="trash-bin-'.$value['topicId'].'"><i class="fas fa-trash-alt" ></i ></div></div >';
                 }
 
                 echo '</div>';
             }
-
-            if($isMode)
-            {
-                echo '<script>
-jQuery(function ($) {
-    function showMessage(result)
-    {
-    if(result==true)
-    {
-        $(\'#messageboxq\').html("Success");
-        $(\'#messageboxq\').css("background-color"," rgba(72, 205, 183, 0.9)");
-    }
-    else
-    {
-        $(\'#messageboxq\').html("Failure");
-        $(\'#messageboxq\').css("background-color"," rgba(240, 52, 52, 0.9)");
-    }
-    $( "#messageboxq" ).slideDown( 300 ).delay( 5000 ).slideUp( 400 );
-}
-    
-    
-    $("div[id^=\'delete-\']").each(function (index) {
-        $(this).on(\'click\', function () {
-            var parent = $(this).closest(".minimal-topic-box");;
-            const tmp = $(this).attr(\'id\');
-            const id = tmp.substring(7,tmp.length);
-            $.ajax({
-                    url: "deleteTopic",
-                    type: "POST",
-                    data: {id: id},
-                    success: function (response) {
-                        showMessage(response == "success");
-                        parent.fadeOut("slow");
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        showMessage(false);
-                    }
-                });
-        });
-    });
-});
-                
-                    
-</script>';
-            }
-
 
             ?>
         </section>
