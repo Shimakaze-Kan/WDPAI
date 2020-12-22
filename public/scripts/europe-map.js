@@ -39,6 +39,7 @@ countries.forEach(function(item){
 
         var countryId;
         var currentPath;
+        let mapPathsQueue = [];
 
         $('#send-updated-country').click(function (){
             var word = $('#new-word-input').val();
@@ -59,7 +60,8 @@ countries.forEach(function(item){
                         names[countryId] = word;
                         showMessage(response == "success");
                         updateTable(countryId);
-                        currentPath.css({ fill: "#ff0000" });
+                        mapPathsQueue.shift().css({ fill: "#ff0000" });
+                        mapPathsQueue = [];
                         //console.log("suces "+response);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -114,7 +116,7 @@ countries.forEach(function(item){
                 //alert(countries[country]);
                 countryId = country;
                 $('#country-name').text(countries[country].toUpperCase());
-                currentPath = jQuery(this);
+                mapPathsQueue.push(jQuery(this));
                 $('#new-word-input').val(names[country]);
                 $('.background-shade').fadeIn(300);
                 $('#new-word-input').focus();
