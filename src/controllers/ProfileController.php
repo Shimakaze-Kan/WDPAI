@@ -25,7 +25,7 @@ class ProfileController extends AppController
         $details = $userRepository->getUsersDetails($user->getId());
         $history = $topicRepository->getUsersTopics($user->getId());
 
-        return $this->render('profile', (['email' => $user->getEmail(), 'id' => $user->getId(),'topics' => $history, 'role' => $user->getRole()]+$details));
+        return $this->render('profile', (['email' => $user->getEmail(), 'id' => $user->getId(),'topics' => $history, 'role' => $user->getRole(), 'active'=>$user->isActive()]+$details));
     }
 
 }

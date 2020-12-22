@@ -40,7 +40,7 @@
                     <img src="<?php echo $avatar_url?>" alt="<?php echo $email."'s avatar"?>" class="avatar">
                 </div>
             <div id="info-container">
-        <span class="bigfont">Email: <?php echo $email ?></span>
+        <span class="bigfont">Email: <?php echo $email; if($active) {echo '<span title="active" style="color:#2EFFAA"> ⬤</span>';} else {echo '<span title="inactive" style="color:red"> ⬤</span>';}?></span>
         <span class="bigfont">User's ID: <?php echo $id ?></span>
         <span class="bigfont" <?php if($role=='mode') {echo 'id="rainbow_text_animated">Role: Moderator';}
         else
