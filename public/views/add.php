@@ -62,9 +62,8 @@
 
             </div>
 
-            <section id="question-preview" class="questions">
-            <div id="question-1">
-
+            <div id="preview-topic-container">
+            <div id="preview-topic-box">
                 <div>
                     <div class="title">Topic Title</div>
                     <img id="img" src="public/img/uploads/No-image.svg">
@@ -75,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            </section>
+            </div>
         </div>
         </div>
     </main>

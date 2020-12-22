@@ -10,20 +10,38 @@ jQuery(function ($) {
 
 var currentMousePos = { x: -1, y: -1 };
 $(document).mousemove(function (event) {
-    currentMousePos.x = event.pageX + 10;
+    currentMousePos.x = event.pageX + 30;
     currentMousePos.y = event.pageY;
 });
 
+const TOPIC_PREVIEW_HEIGHT = 300;
+
 $('#preview').mouseover(function (){
-    $('#question-preview').css({ 'top': currentMousePos.y, 'left': currentMousePos.x }).fadeIn('fast');
+    let yPos = currentMousePos.y;
+
+    if(yPos+TOPIC_PREVIEW_HEIGHT>window.innerHeight)
+    {
+        $('#preview-topic-container').css({ 'top': currentMousePos.y-TOPIC_PREVIEW_HEIGHT, 'left': currentMousePos.x }).fadeIn('fast');
+    }
+    else {
+        $('#preview-topic-container').css({'top': currentMousePos.y, 'left': currentMousePos.x}).fadeIn('fast');
+    }
 });
 
     $('#preview').mouseout(function () {
-        $('#question-preview').fadeOut('fast'); //.css({ 'display': 'none' });
+        $('#preview-topic-container').fadeOut('fast'); //.css({ 'display': 'none' });
     });
 
     $('#preview').mousemove(function () {
-        $('#question-preview').css({ 'top': currentMousePos.y, 'left': currentMousePos.x });
+        let yPos = currentMousePos.y;
+
+        if(yPos+TOPIC_PREVIEW_HEIGHT>window.innerHeight)
+        {
+            $('#preview-topic-container').css({ 'top': currentMousePos.y-TOPIC_PREVIEW_HEIGHT, 'left': currentMousePos.x });
+        }
+        else {
+            $('#preview-topic-container').css({'top': currentMousePos.y, 'left': currentMousePos.x});
+        }
     });
 
     $('#title-text').mouseover(function (){

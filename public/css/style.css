@@ -325,4 +325,6 @@ margin-bottom: 0.5em;
     color: white;
     font: normal normal normal 3em Rubik;
     z-index: 999;
+    text-align: center;
+    line-height: 50vh;
 }

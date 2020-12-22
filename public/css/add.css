@@ -15,14 +15,38 @@ input {
     padding-left: 0.5em;
 }
 
-#question-preview {
-    position: absolute;
+#preview-topic-container {
+    position: fixed;
     display: none;
     z-index: 999;
 }
 
-#question-1 {
-    min-width: 400px;
+#preview-topic-box>div>img {
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#preview-topic-box>div {
+    height: 90%;
+    font: normal normal bold 1em Arial;
+    color: #2DE79B;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#preview-topic-box {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #95989A;
+    border-radius: 10px 10px 0px 10px;
+    height: 300px;
+    width: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 main > div{
