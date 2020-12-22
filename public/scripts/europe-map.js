@@ -189,6 +189,7 @@ countries.forEach(function(item){
                 }
 
                 $('#data-table').fadeIn('fast');
+                updateTableHeight();
             }
         });
 
@@ -202,6 +203,14 @@ countries.forEach(function(item){
                 return false;
             }
         });
+
+        function updateTableHeight() {
+            if($('#data-table').offset().top + $('#data-table').height() > $(window).height())
+            {
+                $('#data-table').height($(window).height()-$('#data-table').offset().top);
+            }
+            //$('#data-table').height($(window).height()-$('#data-table').offset().top);
+        }
 
     });
 

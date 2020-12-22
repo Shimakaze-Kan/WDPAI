@@ -107,6 +107,7 @@ circle:hover {
     top: 7em;
     margin-top: 1em;
     z-index: 999;
+    overflow-y: auto;
 }
 
 table {
