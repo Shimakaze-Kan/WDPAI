@@ -139,3 +139,7 @@ tr:hover {
 tr:first-of-type:hover {
     background-color: #f7f7f7;
 }
+
+body {
+    overflow: hidden;
+}
