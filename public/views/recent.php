@@ -42,7 +42,7 @@
                 <div class="title-mininal-box">'.$value['title'].'</div>
                 </div>
                 <div class="details-mininal-box">
-                    <span class="';
+                    <span title="Go to user\'s profile" id="user-id-'.$value['user_id'].'" class="';
                     if($value['user_role']=='mode')
                     {
                         echo "rainbow_text_animated";

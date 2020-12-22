@@ -8,6 +8,14 @@ jQuery(function ($) {
         });
     });
 
+    $("span[id^='user-id-']").each(function (index) {
+        $(this).on('click', function () {
+            const tmp = $(this).attr('id');
+            const id = tmp.substring(8,tmp.length);
+            window.location = "profile?id="+id;
+        });
+    });
+
     function showMessage(result)
     {
         if(result==true)

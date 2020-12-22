@@ -20,8 +20,20 @@ class ProfileController extends AppController
             return $this->render('login');
         }
 
-        $email = $_SESSION['user_email'];
-        $user = $userRepository->getUser($email);
+        $user = null;
+
+        if(!empty($_GET))
+        {
+            $id = $_GET['id'];
+            $user = $userRepository->getUserById($id);
+        }
+        else
+        {
+            $email = $_SESSION['user_email'];
+            $user = $userRepository->getUserByEmail($email);
+        }
+
+
         $details = $userRepository->getUsersDetails($user->getId());
         $history = $topicRepository->getUsersTopics($user->getId());
 

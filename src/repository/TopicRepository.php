@@ -90,7 +90,7 @@ class TopicRepository extends Repository
     public function getAllTopic()
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT id, title, img_url, "like", dislike, created_at, email, user_role FROM all_topics_view
+            SELECT id, title, img_url, "like", dislike, created_at, email, user_role, user_id FROM all_topics_view
         ');
 
         $stmt->execute();
@@ -98,7 +98,8 @@ class TopicRepository extends Repository
         $rows = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             array_push($rows, ['title' => $row['title'], 'date' => $row['created_at'], 'topicId' => $row['id'],
-                'like'=>$row['like'], 'dislike'=>$row['dislike'], 'author'=>$row['email'], 'img_url'=>$row['img_url'], 'user_role'=>$row['user_role']]);
+                'like'=>$row['like'], 'dislike'=>$row['dislike'], 'author'=>$row['email'], 'img_url'=>$row['img_url'],
+                'user_role'=>$row['user_role'], 'user_id'=>$row['user_id']]);
         }
 
         return $rows;
