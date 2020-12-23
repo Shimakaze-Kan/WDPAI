@@ -33,11 +33,23 @@ class ProfileController extends AppController
             $user = $userRepository->getUserByEmail($email);
         }
 
+        $ban = strtotime($user->getBanDate());
+        if(date('Y-m-d',$ban)<date("Y-m-d"))
+        {
+            $ban=false;
+        }
+        else
+        {
+            $ban=date("Y-m-d",$ban);
+        }
+
 
         $details = $userRepository->getUsersDetails($user->getId());
         $history = $topicRepository->getUsersTopics($user->getId());
 
-        return $this->render('profile', (['email' => $user->getEmail(), 'id' => $user->getId(),'topics' => $history, 'role' => $user->getRole(), 'active'=>$user->isActive()]+$details));
+        $isMode = $_SESSION['user_role'] == 'mode';
+
+        return $this->render('profile', (['email' => $user->getEmail(), 'id' => $user->getId(),'topics' => $history, 'role' => $user->getRole(), 'active'=>$user->isActive(), 'isMode'=>$isMode, 'ban'=>$ban]+$details));
     }
 
 }

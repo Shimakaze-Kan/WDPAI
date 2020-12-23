@@ -16,6 +16,8 @@ Routing::post('getCountriesData', 'GetAjaxTextController');
 Routing::post('addTopic', 'TopicController');
 Routing::post('deleteTopic', 'TopicController');
 Routing::post('recent', 'RecentController');
+Routing::post('banUser', 'BanUserController');
+Routing::post('unbanUser', 'BanUserController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('logout', 'SecurityController');

@@ -85,65 +85,69 @@ tr:first-of-type {
     }
 }
 
-.container {
+.lengend-action-buttons {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+label {
+    font-weight: normal;
+    font-size: 1em;
+    Font-Family: Rubik;
+    Color: black;
     display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Hide the browser's default radio button */
-.container input {
-    position: absolute;
-    opacity: 0;
     cursor: pointer;
 }
-
-/* Create a custom radio button */
-.checkmark {
+[type="radio"] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 1em;
-    width: 1em;
-    background-color: #eee;
-    border-radius: 50%;
+    width: 1px;
+}
+[type="radio"] + span:after {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    vertical-align: -0.10em;
+    border-radius: 1em;
+    border: 0.2em solid #fff;
+    box-shadow: 0 0 0 0.10em #AC0EE7;
+    margin-left: 0.75em;
+    transition: 0.5s ease all;
+}
+[type="radio"]:checked + span:after {
+    background: #2EFFAA;
+    box-shadow: 0 0 0 0.10em #AC0EE7;
+}
+[type="radio"]:focus + span::before {
+    font-size: 1.2em;
+    line-height: 1;
+    vertical-align: -0.125em;
 }
 
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-    background-color: #ccc;
+#ban-user-container {
+    display: flex;
+    flex-direction: column;
+    border-left-color: #707070;
+    border-left-style: dotted;
+    border-left-width: 0.1em;
+    margin-left: 2em;
 }
 
-/* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
+#messageboxq {
     display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
+    position: absolute;
+    color: white;
+    background-color: rgba(72, 205, 183, 0.9);
+    border-radius: 0.3em;
+    padding: 0.5em;
+    z-index: 999;
+    font-size: 3em;
+    bottom: 0;
+    right: 0;
 }

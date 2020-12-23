@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <script type="text/javascript" src="public/scripts/menu.js"></script>
     <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>
+    <script type="text/javascript" src="public/scripts/profile.js"></script>
     <title>LOGIN PAGE</title>
 
 </head>
@@ -34,6 +35,8 @@
                 ACCOUNT
             </div>
         </header>
+        <div id="messageboxq">
+        </div>
         <div id="shadow-menu">Close</div>
         <div id="profile-container">
             <div id="profile-content">
@@ -41,19 +44,53 @@
                     <img src="<?php echo $avatar_url?>" alt="<?php echo $email."'s avatar"?>" class="avatar">
                 </div>
             <div id="info-container">
-        <span class="bigfont">Email: <?php echo $email; if($active) {echo '<span title="active" style="color:#2EFFAA"> ⬤</span>';} else {echo '<span title="inactive" style="color:red"> ⬤</span>';}?></span>
-        <span class="bigfont">User's ID: <?php echo $id ?></span>
+        <span class="bigfont">Email: <?php echo $email;
+        if($ban!=false)
+        {
+            echo '<span id="user-state" title="User banned until: '.$ban.'" style="color:black"> ⬤</span>';
+        }
+        else if($active)
+        {
+            echo '<span id="user-state" title="active" style="color:#2EFFAA"> ⬤</span>';
+        } else {
+            echo '<span id="user-state" title="inactive" style="color:red"> ⬤</span>';
+        }
+
+        ?></span>
+        <span id="user-id" class="bigfont">User's ID: <?php echo $id ?></span>
         <span class="bigfont" <?php if($role=='mode') {echo 'id="rainbow_text_animated">Role: Moderator';}
         else
         {
             echo ">Role: User";
         }
         ?></span>
+
             </div>
-                <label class="container">One
-                    <input type="radio" checked="checked" name="radio">
-                    <span class="checkmark"></span>
-                </label>
+                <?php if($isMode)
+                    {
+                echo '<div id="ban-user-container">
+                <div class="lengend-action-buttons lengend-action-buttons-first">
+                    <label for="d3_graph_chart0001day">
+                        <input type="radio" name="date_range" id="d3_graph_chart0001day" value="1day" checked="checked">
+                        <span>1 day</span>
+                    </label>
+                </div>
+                <div class="lengend-action-buttons lengend-action-buttons-first">
+                    <label for="d3_graph_chart0007day">
+                        <input type="radio" name="date_range" id="d3_graph_chart0007day" value="7days">
+                        <span>7 days</span>
+                    </label>
+                </div>
+                <div class="lengend-action-buttons lengend-action-buttons-first">
+                    <label for="d3_graph_chart0010years">
+                        <input type="radio" name="date_range" id="d3_graph_chart0010years" value="10years">
+                        <span>10 years</span>
+                    </label>
+                </div>
+                <button id="ban-button" class="purple-button">BAN</button>
+                <button id="unban-button" class="purple-button">UNBAN</button>
+            </div>';
+            }?>
             </div>
 
 

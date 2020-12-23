@@ -123,4 +123,29 @@ class UserRepository extends Repository
         return $result;
     }
 
+    public function getUserBanDate($id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT ban from public.users where id=:id
+        ');
+
+        $stmt->bindParam(':id', $id,PDO::PARAM_INT);
+        $stmt->execute();
+        $date = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $date['ban'];
+    }
+
+    public function setUserBanDate($id, $newDate)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users SET ban=:newDate WHERE id=:id
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':newDate', $newDate, PDO::PARAM_STR);
+        $stmt->execute();
+
+    }
+
 }
