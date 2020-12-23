@@ -3,38 +3,33 @@ let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userA
 if(isMobile) {
     $(window).resize(onresize);
 
-    let wasLandscapeViewBefore = false;
+    var wasLandscapeViewBefore = false;
 
     function onresize() {
         let newViewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         let newViewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         let landscapeView = (newViewportHeight < newViewportWidth) == true;
 
-        if(/iPad/.test(navigator.userAgent))
-        {
-            if(!landscapeView) {
-                $('nav').css({"width": newViewportWidth - newViewportWidth * 0.7, "height": newViewportHeight});
-            }
-            else
-            {
-                $('nav').css({"width": newViewportWidth - newViewportWidth * 0.8, "height": newViewportHeight});
-            }
-        }
-        else {
+
             if (landscapeView) {
-                $('nav').css({"width": newViewportWidth - newViewportWidth * 0.8, "height": newViewportHeight});
+                $('nav').show();
+                $('nav').css({'visibility': 'visible',"width": newViewportWidth - newViewportWidth * 0.8, "height": newViewportHeight});
+                $('nav').children().each(function ()
+                {
+                    $(this).show();
+                })
                 $('#shadow-menu').hide();
-                $('#slide-nav').slideDown(300).delay(500).children().slideDown(300);
                 wasLandscapeViewBefore = true;
             } else {
                 $('#shadow-menu').css({"width": newViewportWidth / 2, "height": newViewportHeight});
-                if (wasLandscapeViewBefore) {
+                if ($('nav').is(":visible") || $('#shadow-menu').is(":visible")) {
                     $('nav').hide();
+                    $('#shadow-menu').hide();
                 } else {
                     $('nav').css({"width": newViewportWidth / 2, "height": newViewportHeight});
                 }
                 wasLandscapeViewBefore = false;
             }
-        }
+
     }
 }

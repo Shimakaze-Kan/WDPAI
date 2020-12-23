@@ -1,4 +1,4 @@
-@media only screen and (max-device-width: 420px) and (orientation:portrait){
+@media only screen and (max-device-width: 767px) and (orientation:portrait){
     .container {
         flex-direction: column;
     }
@@ -128,7 +128,38 @@ width: 60px;
     }
 }
 
-@media only screen and (max-device-height: 420px) and (orientation:landscape) {
+@media only screen and (max-device-width: 768px) and (orientation:portrait) {
+    #slide-nav {
+
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        /*transition: 0.5s;*/
+    }
+
+    #burger {
+        visibility: visible;
+    }
+
+    li > .button {
+        font: normal normal bold 2em Arial;
+    }
+
+    .small-logo {
+        font: normal normal normal 3em Rubik;
+    }
+}
+
+@media only screen and (max-device-height: 768px) and (orientation:landscape) {
+
+    #slide-nav {
+        position: relative;
+    }
+
     form.login {
         display: flex;
         flex-direction: column;
@@ -144,5 +175,11 @@ width: 60px;
         opacity: 0.96;
         min-width: 336px;
         min-height: 336px;
+    }
+}
+
+@media only screen and (max-device-width: 767px) and (orientation:portrait){
+    li > .button {
+        font: normal normal bold 1.5em Arial;
     }
 }

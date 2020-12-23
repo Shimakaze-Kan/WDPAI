@@ -50,6 +50,10 @@
         }
         ?></span>
             </div>
+                <label class="container">One
+                    <input type="radio" checked="checked" name="radio">
+                    <span class="checkmark"></span>
+                </label>
             </div>
 
 
