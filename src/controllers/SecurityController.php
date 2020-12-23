@@ -27,7 +27,6 @@ class SecurityController extends AppController
 
         $user = $userRepository->getUserByEmail($email);
 
-
         if(!$user)
         {
             return $this->render('login', ['messages' => ['User not exist!']]);
@@ -42,6 +41,14 @@ class SecurityController extends AppController
         {
             return $this->render('login', ['messages' => ['wrong password']]);
         }
+
+        $banDate = $user->getBanDate();
+        $today = date("Y-m-d");
+
+        if ($banDate > $today) {
+            return $this->render('login', ['messages' => ['Your account has been blocked until: '.$banDate.' today is '.$today]]);
+        }
+
 
         $userRepository->changeUserActiveStatus($email, true);
 

@@ -2,6 +2,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/style-mobile.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+            charset="utf-8"></script>
     <title>LOGIN PAGE</title>
 
 </head>

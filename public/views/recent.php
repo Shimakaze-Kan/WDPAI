@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <script type="text/javascript" src="public/scripts/menu.js"></script>
     <script type="text/javascript" src="public/scripts/recent.js"></script>
-
+    <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>
     <title>CONNTLY🔌 - RECENT</title>
 
 </head>
