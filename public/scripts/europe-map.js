@@ -59,19 +59,17 @@ countries.forEach(function(item){
                     success: function (response) {
                         names[countryId] = word;
                         showMessage(response == "success");
-                        updateTable(countryId);
-                        mapPathsQueue.shift().css({ fill: "#ff0000" });
-                        mapPathsQueue = [];
-                        //console.log("suces "+response);
+                        updateValues();
+                        updateTable();
+                        updateTableHeight();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         showMessage(false);
-                        //console.log("fail "+response);
                     }
                 });
             }
 
-            $('.background-shade').fadeOut(300);
+            $('#minimal-popup').fadeOut(300);
         });
 
         //$('#test-button').click(function (){
@@ -118,7 +116,7 @@ countries.forEach(function(item){
                 $('#country-name').text(countries[country].toUpperCase());
                 mapPathsQueue.push(jQuery(this));
                 $('#new-word-input').val(names[country]);
-                $('.background-shade').fadeIn(300);
+                $('#minimal-popup').fadeIn(300);
                 $('#new-word-input').focus();
             }
         });
@@ -161,18 +159,32 @@ countries.forEach(function(item){
         });
 
         function updateTable(action = 'appendAll'){
-            var tbody = $('#myTable').children('tbody');
-            var table = tbody.length ? tbody : $('#myTable');
-
-            if(action=='appendAll') {
-                for (var e in names) {
-                    table.append('<tr><td>' + e + '</td><td>' + countries[e] + '</td><td>' + names[e] + '</td></tr>');
+            let tbody = $('#myTable').children('tbody');
+            tbody.empty();
+            tbody.append(                '                <tr>\n' +
+                '                    <td>Country Code (ISO-3166-1-ALPHA2)</td>\n' +
+                '                    <td>Country Name</td>\n' +
+                '                    <td>Value <button id="add-new" class="purple-button">ADD NEW</button></td>\n' +
+                '                </tr>\n');
+            $('#add-new').click(function (){
+                $('#full-popup').fadeIn(300);
+                $('#country-predicate-input').focus();
+            });
+                for (let e in names) {
+                    tbody.append('<tr><td>' + e + '</td><td>' + countries[e] + '</td><td>' + names[e] + '</td></tr>');
                 }
-            }
-            else
-            {
-                table.append('<tr><td>' + action + '</td><td>' + countries[action] + '</td><td>' + names[action] + '</td></tr>');
-            }
+
+            $('#myTable').find('tr').click( function(){
+                countryId = $(this).children('td:eq(0)').text();
+                const countryName = $(this).children('td:eq(1)').text();
+                const countryValue = $(this).children('td:eq(2)').text();
+
+                if(countryName!="Country Name") {
+                    $('#country-name').text(countryName);
+                    $('#new-word-input').val(countryValue);
+                    $('#minimal-popup').fadeIn(300);
+                }
+            });
         };
 
         $('#show-table-view-button').click(function (){
@@ -186,17 +198,20 @@ countries.forEach(function(item){
                 $('#show-table-view-button').text('Close table view');
 
 
-                if($('#myTable').find('tr').length==1) {
+
                     updateTable();
-                }
+
 
                 $('#data-table').fadeIn('fast');
                 updateTableHeight();
             }
+
+
+
         });
 
         $('#close-enter-data-popup').click(function (){
-           $('.background-shade').fadeOut(300);
+           $('#minimal-popup').fadeOut(300);
         });
 
         $('#new-word-input').keypress(function (e) {
@@ -206,13 +221,88 @@ countries.forEach(function(item){
             }
         });
 
+        $(window).resize(updateTableHeight);
         function updateTableHeight() {
+            $('#data-table').css('height', 'auto');
             if($('#data-table').offset().top + $('#data-table').height() > $(window).height())
             {
                 $('#data-table').height($(window).height()-$('#data-table').offset().top);
             }
             //$('#data-table').height($(window).height()-$('#data-table').offset().top);
         }
+
+
+        $('#close-full-enter-data-popup').click(function (){
+           $('#full-popup').fadeOut(300);
+        });
+
+        $('#country-predicate-input').on('keyup', function(){
+            const keyword = $('#country-predicate-input').val().toLowerCase();
+            const match_pattern = new RegExp(keyword.replace(/[ ,]/g, ''), 'gi');
+            let foundCountry = '-';
+            for (let key in countries) {
+                if(countries[key].toLowerCase().replace(/[ ,]/g, '').search(match_pattern) != -1)
+                {
+                    foundCountry = countries[key];
+                    break;
+                }
+            }
+            $('#value-for-country').text(foundCountry);
+        });
+
+        $('#send-full-updated-country').click(function (){
+            let word = $('#new-word-input-full').val();
+            const countryName = $('#value-for-country').text();
+            let countryCode = '-';
+
+            for(let key in countries){
+                if(countries[key]==countryName)
+                {
+                    countryCode = key;
+                }
+            }
+
+            if(countryCode=='-')
+            {
+                $('#full-popup').fadeOut(300);
+                showMessage(false);
+                return;
+            }
+
+            if(word==='')
+            {
+                showMessage(false);
+            }
+            else {
+                const urlParams = new URLSearchParams(window.location.search);
+                const topicId = urlParams.get('id');
+
+                $.ajax({
+                    url: "returnConfirm",
+                    type: "POST",
+                    data: {id: countryCode, value: word, topicId: topicId},
+                    success: function (response) {
+                        names[countryCode] = word;
+                        showMessage(response == "success");
+                        updateValues();
+                        updateTable();
+                        updateTableHeight();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        showMessage(false);
+                    }
+                });
+            }
+
+            $('#full-popup').fadeOut(300);
+        });
+
+        $('#new-word-input-full').keypress(function (e) {
+            if (e.which == 13) {
+                $('#send-full-updated-country').click();
+                return false;
+            }
+        });
 
     });
 

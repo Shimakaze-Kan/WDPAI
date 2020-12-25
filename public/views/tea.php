@@ -42,7 +42,7 @@
                 <tr>
                     <td>Country Code (ISO-3166-1-ALPHA2)</td>
                     <td>Country Name</td>
-                    <td>Value <button class="purple-button">ADD NEW</button></td>
+                    <td>Value <button id="add-new" class="purple-button">ADD NEW</button></td>
                 </tr>
                 </tbody>
             </table>
@@ -63,7 +63,7 @@
         </div>-->
 
 
-        <div class="background-shade">
+        <div id="minimal-popup" class="background-shade">
             <div class="enter-data-popup">
                 ENTER NEW VALUE FOR
                 <span id="country-name"></span>
@@ -72,6 +72,21 @@
                     <div class="login-buttons-container">
                     <button id="send-updated-country" type="submit" >SEND</button>
                     <button id="close-enter-data-popup" type="submit" >CLOSE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="full-popup" class="background-shade">
+            <div class="enter-predicate-data-popup">
+                <div class="update-country">
+                    <input id="country-predicate-input" type="text" placeholder="Start typing country name...">
+                    <span>Country name:</span>
+                    <span id="value-for-country">-</span>
+                    <input id="new-word-input-full" type="text" placeholder="New word" >
+                    <div class="login-buttons-container">
+                        <button id="send-full-updated-country" type="submit" >SEND</button>
+                        <button id="close-full-enter-data-popup" type="submit" >CLOSE</button>
                     </div>
                 </div>
             </div>
