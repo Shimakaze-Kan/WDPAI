@@ -29,4 +29,34 @@
     #data-table {
         z-index: 2;
     }
+
+    .enter-data-popup {
+        top: 10%;
+        left: auto;
+        min-width: unset;
+        width: 90%;
+        right: auto;
+    }
+
+    .enter-predicate-data-popup {
+        top: 10%;
+        left: auto;
+        min-width: unset;
+        width: 90%;
+        right: auto;
+    }
+
+    .update-country {
+        width: 95%;
+    }
+
+    #country-predicate-input{
+        width: 95%;
+    }
+
+    #new-word-input-full {
+        width: 95%;
+    }
+
+
 }

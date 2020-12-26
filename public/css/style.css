@@ -53,7 +53,7 @@ form.login {
 .login-caption-container {
     display: flex;
     flex-direction: column;
-    
+
     text-align: left;
     align-items: center;
     font: normal normal bold 14px/16px Arial;
@@ -97,7 +97,7 @@ input {
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
-    background: #FAFAFA;  
+    background: #FAFAFA;
 }
 
 nav {
@@ -105,7 +105,7 @@ nav {
     height: 100%;
     background: transparent linear-gradient(180deg, #2EFFAA 0%, #AD0DE7 100%) 0% 0% no-repeat padding-box;
     border-radius: 0px 0px 10px 0px;
-
+    visibility: visible;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

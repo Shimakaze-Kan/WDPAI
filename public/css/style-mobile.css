@@ -1,4 +1,4 @@
-@media only screen and (max-device-width: 767px) and (orientation:portrait){
+@media only screen and (max-device-width: 420px){
     .container {
         flex-direction: column;
     }
@@ -9,6 +9,8 @@
 
     .login-container, .logo {
         width: 100%;
+        overflow: hidden;
+        height: auto;
     }
 
     form {
@@ -22,35 +24,39 @@
 
     input {
         background: #FFFFFF 0% 0% no-repeat padding-box;
-border: 3px solid #6F7173;
-border-radius: 10px;
-text-align: left;
-font: normal normal normal 1em Arial;
-line-height: 16px;
-letter-spacing: 0px;
-color: #2699FB;
-width: 85%;
-padding: 0.5em;
+        border: 3px solid #6F7173;
+        border-radius: 10px;
+        text-align: left;
+        font: normal normal normal 1em Arial;
+        line-height: 16px;
+        letter-spacing: 0px;
+        color: #2699FB;
+        width: 85%;
+        padding: 0.5em;
     }
 
     .login-caption-container {
         display: flex;
-flex-direction: column;
-text-align: left;
-align-items: center;
-font: normal normal bold 1.5em Arial;
-letter-spacing: 0px;
-color: #7A6DCE;
-width: 100%;
-margin-top: 2em;
+        flex-direction: column;
+        text-align: left;
+        align-items: center;
+        font: normal normal bold 1.5em Arial;
+        letter-spacing: 0px;
+        color: #7A6DCE;
+        width: 100%;
+        margin-top: 2em;
     }
 
     form.login {
         height: 50vh;
         width: 100%;
         position: fixed;
-bottom: 0;
-opacity: 0.98;
+        bottom: 0;
+        opacity: 0.98;
+        min-height: 50vh;
+        max-height: 100vh;
+        overflow: hidden;
+        height: auto;
     }
 
     .login-container {
@@ -62,8 +68,8 @@ opacity: 0.98;
 
     .logo {
         font: normal normal normal 5em Rubik;
-    position: absolute;
-    top: 20%;
+        position: absolute;
+        top: 20%;
     }
 
     #slide-nav {
@@ -71,7 +77,8 @@ opacity: 0.98;
         width: 50%;
         height: 100%;
         position: absolute;
-        display: none;
+        /*display: none;*/
+        visibility: hidden;
         top: 0;
         left: 0;
         z-index: 999;
@@ -95,8 +102,8 @@ opacity: 0.98;
     select {
         font: normal normal normal 1em Arial;
         width: 90%;
-height: 2em;
-border: 3px solid #6F7173;
+        height: 2em;
+        border: 3px solid #6F7173;
     }
 
     .register-button {
@@ -105,7 +112,7 @@ border: 3px solid #6F7173;
 
     .checkbox > input {
         height: 60px;
-width: 60px;
+        width: 60px;
     }
 
     .checkbox > input:checked {
@@ -127,8 +134,35 @@ width: 60px;
         filter: none;
     }
 }
+@media only screen and (max-device-height: 420px){
+    #slide-nav{
+        visibility: visible !important;
+    }
 
-@media only screen and (max-device-width: 768px) and (orientation:portrait) {
+    li {
+        visibility: visible !important;
+    }
+
+    ul {
+        visibility: visible !important;
+        display: block !important;
+    }
+    button {
+        visibility: visible !important;
+    }
+
+    .small-logo {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    #shadow-menu {
+        visibility: hidden;
+    }
+
+}
+
+@media only screen and (min-device-width: 768px) and (orientation:portrait) {
     #slide-nav {
 
         width: 50%;
@@ -154,7 +188,7 @@ width: 60px;
     }
 }
 
-@media only screen and (max-device-height: 768px) and (orientation:landscape) {
+@media only screen and (min-device-height: 768px) and (orientation:landscape) {
 
     #slide-nav {
         position: relative;
@@ -176,9 +210,34 @@ width: 60px;
         min-width: 336px;
         min-height: 336px;
     }
+
+    #slide-nav{
+        visibility: visible !important;
+    }
+
+    li {
+        visibility: visible !important;
+    }
+
+    ul {
+        visibility: visible !important;
+        display: block !important;
+    }
+    button {
+        visibility: visible !important;
+    }
+
+    .small-logo {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    #shadow-menu {
+        visibility: hidden;
+    }
 }
 
-@media only screen and (max-device-width: 767px) and (orientation:portrait){
+@media only screen and (max-device-width: 420px) and (orientation:portrait){
     li > .button {
         font: normal normal bold 1.5em Arial;
     }

@@ -88,6 +88,8 @@ countries.forEach(function(item){
                             names[i] = response[i];
                     }
                     updateValues();
+                    updateTable();
+                    updateTableHeight();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                 }
@@ -183,6 +185,7 @@ countries.forEach(function(item){
                     $('#country-name').text(countryName);
                     $('#new-word-input').val(countryValue);
                     $('#minimal-popup').fadeIn(300);
+                    $('#new-word-input').focus();
                 }
             });
         };

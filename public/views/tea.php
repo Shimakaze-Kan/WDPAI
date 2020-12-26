@@ -19,7 +19,6 @@
     <title>LOGIN PAGE</title>
 
 </head>
-
 <body>
 <div class="base-container">
     <?php include("nav.php"); ?>
