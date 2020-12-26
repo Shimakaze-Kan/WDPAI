@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../HMAC_Cookie.php';
 
 class SecurityController extends AppController
 {
@@ -14,6 +15,7 @@ class SecurityController extends AppController
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/featured");
         }
+        $hmac_cookie = new HMAC_Cookie();
 
         $userRepository = new UserRepository();
 
@@ -56,6 +58,12 @@ class SecurityController extends AppController
         $user_id = $user->getId();
         $user_role = $user->getRole();
 
+
+        if(!isset($_COOKIE['user'])) {
+            $cookieData = $hmac_cookie->encryptCookieData( $user_email.';'.$user_id . ';' . $user_role);
+            setcookie('user', $cookieData, time() + (86000 * 30), "/");
+        }
+
         $_SESSION['user_email'] = $user_email;
         $_SESSION['user_id'] = $user_id;
         $_SESSION['user_role'] = $user_role;
@@ -70,7 +78,7 @@ class SecurityController extends AppController
     {
         $userRepository = new UserRepository();
         $userRepository->changeUserActiveStatus($_SESSION['user_email'], false);
-        setcookie("loginCredentials", "", time() - 3600);
+        setcookie("user", "", time() - 3600);
         session_destroy();
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/index");

@@ -162,7 +162,7 @@
 
 }
 
-@media only screen and (min-device-width: 768px) and (orientation:portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-height: 1024px) and (orientation:portrait) {
     #slide-nav {
 
         width: 50%;
@@ -188,7 +188,7 @@
     }
 }
 
-@media only screen and (min-device-height: 768px) and (orientation:landscape) {
+@media only screen and (min-device-height: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
 
     #slide-nav {
         position: relative;
