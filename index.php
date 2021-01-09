@@ -22,5 +22,6 @@ Routing::post('unbanUser', 'BanUserController');
 Routing::post('login', 'SecurityController');
 Routing::post('logout', 'SecurityController');
 Routing::post('registration', 'SecurityController');
+Routing::post('updateLastActivity', 'UpdateLastActivityController');
 
 Routing::run($path);

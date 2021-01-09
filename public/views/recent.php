@@ -11,6 +11,7 @@
     <script type="text/javascript" src="public/scripts/menu.js"></script>
     <script type="text/javascript" src="public/scripts/recent.js"></script>
     <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>
+    <script type="text/javascript" src="public/scripts/update-last-active.js"></script>
     <title>CONNTLY🔌 - RECENT</title>
 
 </head>

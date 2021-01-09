@@ -16,6 +16,7 @@
     <!--<script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>
+    <script type="text/javascript" src="public/scripts/update-last-active.js"></script>
     <title>LOGIN PAGE</title>
 
 </head>

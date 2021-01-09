@@ -8,6 +8,7 @@ require_once 'src/controllers/TopicController.php';
 require_once 'src/controllers/ProfileController.php';
 require_once 'src/controllers/RecentController.php';
 require_once 'src/controllers/BanUserController.php';
+require_once 'src/controllers/UpdateLastActivityController.php';
 
 class Routing
 {

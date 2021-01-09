@@ -12,6 +12,7 @@
     <script type="text/javascript" src="public/scripts/menu.js"></script>
     <script type="text/javascript" src="public/scripts/featured.js"></script>
     <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>
+    <script type="text/javascript" src="public/scripts/update-last-active.js"></script>
     <title>LOGIN PAGE</title>
 
 </head>

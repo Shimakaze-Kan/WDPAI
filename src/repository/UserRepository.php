@@ -148,4 +148,14 @@ class UserRepository extends Repository
 
     }
 
+    public function updateLastActivity($id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            select update_last_active(:id)
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 }
