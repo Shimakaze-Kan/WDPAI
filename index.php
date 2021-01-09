@@ -6,22 +6,25 @@ $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('index', 'DefaultController');
-Routing::get('featured', 'DefaultController');
-Routing::get('tea', 'DefaultController');
 Routing::get('add', 'DefaultController');
-Routing::get('profile', 'ProfileController');
 
-Routing::post('returnConfirm', 'GetAjaxTextController');
-Routing::post('getCountriesData', 'GetAjaxTextController');
+Routing::get('profile', 'UserController');
+
+Routing::get('recent', 'TopicController');
+Routing::get('featured', 'TopicController');
+Routing::get('tea', 'TopicController');
+
+Routing::post('updateCountryData', 'TopicController');
+Routing::post('getCountriesData', 'TopicController');
 Routing::post('addTopic', 'TopicController');
 Routing::post('deleteTopic', 'TopicController');
-Routing::post('recent', 'RecentController');
-Routing::post('banUser', 'BanUserController');
-Routing::post('unbanUser', 'BanUserController');
+
+Routing::post('banUser', 'UserController');
+Routing::post('unbanUser', 'UserController');
+Routing::post('updateLastActivity', 'UserController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('logout', 'SecurityController');
 Routing::post('registration', 'SecurityController');
-Routing::post('updateLastActivity', 'UpdateLastActivityController');
 
 Routing::run($path);

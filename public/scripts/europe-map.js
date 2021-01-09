@@ -53,7 +53,7 @@ countries.forEach(function(item){
                 const topicId = urlParams.get('id');
 
                 $.ajax({
-                    url: "returnConfirm",
+                    url: "updateCountryData",
                     type: "POST",
                     data: {id: countryId, value: word, topicId: topicId},
                     success: function (response) {
@@ -75,8 +75,7 @@ countries.forEach(function(item){
         //$('#test-button').click(function (){
         const urlParams = new URLSearchParams(window.location.search);
         const topicId = urlParams.get('id');
-        const title = urlParams.get('title').split("_").join(" ");
-        $('#title-text').text(title);
+
             $.ajax({
                 url: "getCountriesData",
                 type: "POST",
@@ -281,7 +280,7 @@ countries.forEach(function(item){
                 const topicId = urlParams.get('id');
 
                 $.ajax({
-                    url: "returnConfirm",
+                    url: "updateCountryData",
                     type: "POST",
                     data: {id: countryCode, value: word, topicId: topicId},
                     success: function (response) {

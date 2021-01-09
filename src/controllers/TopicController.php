@@ -5,6 +5,7 @@ require_once __DIR__."/../models/Topic.php";
 require_once __DIR__.'/../repository/TopicRepository.php';
 class TopicController extends AppController
 {
+    const NO_IMAGE_URL = "public/img/uploads/No-image.svg";
     private $topicRepository;
 
     public function __construct()
@@ -48,17 +49,7 @@ class TopicController extends AppController
         $this->topicRepository->addTopic($topic);
 
 
-
-        //$this->writeData($url);
-
         echo 'success '.substr($_SERVER['SERVER_NAME'],0,-1)."featured";
-    }
-
-    function writeData(string $data)
-    {
-        $myfile = fopen("public/uploads/newfile.txt", "w") or die("Unable to open file!");
-        fwrite($myfile, $data);
-        fclose($myfile);
     }
 
     public function deleteTopic()
@@ -77,5 +68,98 @@ class TopicController extends AppController
         $result = $this->topicRepository->deleteTopic($id);
 
         echo 'success';
+    }
+
+    public function updateCountryData()
+    {
+
+        if(!$this->isPost())
+        {
+            return $this->render('tea');
+        }
+
+        $value = $_POST['value'];
+        $countryId = $_POST['id'];
+        $topicId = $_POST['topicId'];
+
+
+        if($value=='' || $countryId=='' || $topicId=='')
+        {
+            echo 'failure';
+            return;
+        }
+
+        $result = $this->topicRepository->updateTopicDetail($countryId,$value,$topicId);
+
+        if($result==false)
+        {
+            echo 'failure';
+            return;
+        }
+
+        echo 'success';
+    }
+
+    public function getCountriesData()
+    {
+        if(!$this->isPost())
+        {
+            return $this->render('tea');
+        }
+
+        $id = $_POST['id'];
+        $result = $this->topicRepository->getTopicDetails($id);
+
+        if($result==false)
+        {
+            echo 'failure';
+            return;
+        }
+
+        echo json_encode($result);
+    }
+
+    public function recent()
+    {
+        if(!$this->isGet())
+        {
+            return $this->render('featured');
+        }
+
+        $result = $this->topicRepository->getAllTopic();
+        $this->render('recent',['topics'=>$result]);
+    }
+
+    public function featured()
+    {
+        if(!$this->isGet())
+        {
+            return $this->render('login');
+        }
+
+        $topics = $this->topicRepository->getFeaturedTopics();
+
+        foreach ($topics as $topic)
+        {
+            if($topic->getImgUrl() == "")
+            {
+                $topic->setImgUrl(self::NO_IMAGE_URL);
+            }
+        }
+
+        $this->render('featured', ['topics' => $topics]);
+    }
+
+    public function tea()
+    {
+        if(!$this->isGet())
+        {
+            return $this->render('featured');
+        }
+
+        $id = $_GET['id'];
+        $topic = $this->topicRepository->getTopic($id);
+
+        $this->render('tea', ['title' => $topic->getTitle()]);
     }
 }

@@ -6,6 +6,8 @@ class Topic
     private $title;
     private $imgUrl;
     private $like;
+    private $id;
+
 
     public function __construct($title, $imgUrl, $like=0, $dislike=0)
     {
@@ -54,5 +56,15 @@ class Topic
     public function setImgUrl($imgUrl)
     {
         $this->imgUrl = $imgUrl;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }

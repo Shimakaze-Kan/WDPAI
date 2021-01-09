@@ -107,7 +107,7 @@
                 <?php
                 foreach ($topics as $key => $value)
                 {
-                    echo '<tr><td>' . $value['title'] .'</td><td>'.$value['date'].'</td><td>'."<a href=".substr($_SERVER['SERVER_NAME'],0,-1).'tea?id='.$value['topicId']."&title=".str_replace(" ","_", $value['title'])." class='purple-button'>Go to topic</a>" .'</td></tr>';
+                    echo '<tr><td>' . $value['title'] .'</td><td>'.$value['date'].'</td><td>'."<a href=".substr($_SERVER['SERVER_NAME'],0,-1).'tea?id='.$value['topicId']." class='purple-button'>Go to topic</a>" .'</td></tr>';
                 }
                 ?>
                 </tbody>

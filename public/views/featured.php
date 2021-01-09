@@ -30,77 +30,18 @@
           <section class="questions">
 
                     <?php
-                    $topicRepository = new TopicRepository();
-                    $featured = $topicRepository->getFeaturedTopicsIds();
+                    foreach ($topics as $topic) {
 
-
-                    for ($i=0; $i<count($featured); $i++) {
-                        $topic = $topicRepository->getTopic($featured[$i]);
-
-                        $image = "public/img/uploads/No-image.svg";
-                        if($topic->getImgUrl()!="")
-                        {
-                            $image = $topic->getImgUrl();
-                        }
-
-                        echo '<div id="question-'.$featured[$i].'">'.
+                        echo '<div id="question-'. $topic->getId() .'">'.
                             '<div>'.
                             '<div class="title">' . $topic->getTitle() . '</div>' .
-                            '<img src="' . $image . '">' .
-
+                            '<img src="' . $topic->getImgUrl() . '">' .
                             '<div class="social-section">' .
                             '<i class="fas fa-heart">'.$topic->getLike().'</i>' .
                             '<i class="fas fa-share-square">'.$topic->getDislike().'</i>' .
                             '</div> </div></div>';
                     }
                     ?>
-                    <!--
-                    <div id="question-1">
-
-                    <div>
-                    <div class="title">‘Tea’ in European languages</div>
-                    <img src="public/img/uploads/xhlu3k3h.bmp">
-                    
-                    <div class="social-section">
-                        <i class="fas fa-heart"> 600</i>
-                        <i class="fas fa-share-square"> 101</i>
-                    </div>
-                </div>
-            </div>
-            <div id="question-2">
-                <div>
-                    <div class="title">‘Coma’ in European languages</div>
-                    <img src="public/img/uploads/xhlu3k3h.bmp">
-                    
-                    <div class="social-section">
-                        <i class="fas fa-heart"> 600</i>
-                        <i class="fas fa-share-square"> 101</i>
-                    </div>
-                </div>
-            </div>
-            <div id="question-3">
-                <div>
-                    <div class="title">‘Election’ in European languages</div>
-                    <img src="public/img/uploads/xhlu3k3h.bmp">
-                    
-                    <div class="social-section">
-                        <i class="fas fa-heart"> 600</i>
-                        <i class="fas fa-share-square"> 101</i>
-                    </div>
-                </div>
-            </div>
-            <div id="question-4">
-                <div>
-                    <div class="title">‘Easter’ in European languages</div>
-                    <img src="public/img/uploads/xhlu3k3h.bmp">
-                    
-                    <div class="social-section">
-                        <i class="fas fa-heart"> 600</i>
-                        <i class="fas fa-share-square"> 101</i>
-                    </div>
-                </div>
-            </div>
-            -->
         </section>
       </main>
     </div>

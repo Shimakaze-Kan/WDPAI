@@ -27,7 +27,7 @@
         <header>
             <div class="title-bar">
                 <i class="fas fa-bars" id="burger"></i>
-                <span id="title-text"></span>
+                <span id="title-text"><?php echo $title?></span>
             </div>
         </header>
         <div id="shadow-menu">Close</div>
