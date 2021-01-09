@@ -16,8 +16,11 @@ class TopicController extends AppController
 
     public function addTopic()
     {
-        if(!isset($_SESSION['user_email'])) {
-            return $this->render('index');
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            echo 'failure';
+            return;
         }
 
         if(!$this->isCookieSetted())
@@ -54,6 +57,13 @@ class TopicController extends AppController
 
     public function deleteTopic()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            echo 'failure';
+            return;
+        }
+
         if(!$this->isPost())
         {
             return $this->render('login');
@@ -72,6 +82,12 @@ class TopicController extends AppController
 
     public function updateCountryData()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            echo 'failure';
+            return;
+        }
 
         if(!$this->isPost())
         {
@@ -102,6 +118,13 @@ class TopicController extends AppController
 
     public function getCountriesData()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            echo 'failure';
+            return;
+        }
+
         if(!$this->isPost())
         {
             return $this->render('tea');
@@ -121,6 +144,13 @@ class TopicController extends AppController
 
     public function recent()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/index");
+        }
+
         if(!$this->isGet())
         {
             return $this->render('featured');
@@ -132,6 +162,13 @@ class TopicController extends AppController
 
     public function featured()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/index");
+        }
+
         if(!$this->isGet())
         {
             return $this->render('login');
@@ -152,6 +189,13 @@ class TopicController extends AppController
 
     public function tea()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/index");;
+        }
+
         if(!$this->isGet())
         {
             return $this->render('featured');

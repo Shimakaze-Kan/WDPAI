@@ -123,6 +123,20 @@ class UserRepository extends Repository
         return $result;
     }
 
+    public function changeUserActiveStatusUsingId(int $id,bool $state)
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users SET active=:state WHERE id=:id
+        ');
+
+        $stmt->bindParam(':state', $state, PDO::PARAM_BOOL);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
     public function getUserBanDate($id)
     {
         $stmt = $this->database->connect()->prepare('
@@ -156,6 +170,19 @@ class UserRepository extends Repository
 
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
+    }
+
+    public function getUserActiveStatus($id)
+    {
+        $stmt = $this->database->connect()->prepare('
+            select active from public.users where id = :id
+        ');
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['active'];
     }
 
 }

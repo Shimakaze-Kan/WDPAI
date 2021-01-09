@@ -16,8 +16,11 @@ class UserController extends AppController
 
     public function profile()
     {
-        if(!isset($_SESSION['user_email'])) {
-            return $this->render('index');
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/index");
         }
 
         $topicRepository = new TopicRepository();
@@ -61,6 +64,8 @@ class UserController extends AppController
 
     public function banUser()
     {
+        $this->checkCurrentUserActiveStatus();
+
         if(!$this->isPost())
         {
             $this->render('login');
@@ -83,12 +88,15 @@ class UserController extends AppController
         $newDate = date('Y-m-d',strtotime($newDate. (' + '.$years.' years')));
 
         $this->userRepository->setUserBanDate($id, $newDate);
+        $this->userRepository->changeUserActiveStatusUsingId($id, false);
 
         echo 'success';
     }
 
     public function unbanUser()
     {
+        $this->checkCurrentUserActiveStatus();
+
         if(!$this->isPost())
         {
             $this->render('login');
@@ -106,6 +114,13 @@ class UserController extends AppController
 
     public function updateLastActivity()
     {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/index");
+        }
+
         if(!$this->isPost())
         {
             $this->render('login');

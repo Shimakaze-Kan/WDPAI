@@ -77,7 +77,9 @@ class SecurityController extends AppController
     public function logout()
     {
         $userRepository = new UserRepository();
-        $userRepository->changeUserActiveStatus($_SESSION['user_email'], false);
+        if(isset($_SESSION['user_email'])) {
+            $userRepository->changeUserActiveStatus($_SESSION['user_email'], false);
+        }
         setcookie("user", "", time() - 3600);
         session_destroy();
         $url = "http://$_SERVER[HTTP_HOST]";
