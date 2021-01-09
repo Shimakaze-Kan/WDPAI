@@ -15,7 +15,9 @@ function showMessage(result)
 
 jQuery(function ($) {
    $('#ban-button').click(function (){
-       const userId = $('#user-id').text().substring(11);
+       const urlParams = new URLSearchParams(window.location.search);
+       const userId = urlParams.get('id');
+       //const userId = $('#user-id').text().substring(11);
        let banPeriod = {years:0, months:0, days:0, userId: userId};
        if($('#d3_graph_chart0001day').is(':checked'))
        {
@@ -57,7 +59,9 @@ jQuery(function ($) {
    });
 
    $('#unban-button').click(function (){
-       const userId = $('#user-id').text().substring(11);
+       const urlParams = new URLSearchParams(window.location.search);
+       const userId = urlParams.get('id');
+       //const userId = $('#user-id').text().substring(11);
        $.ajax({
            url: "unbanUser",
            type: "POST",

@@ -43,6 +43,12 @@ class UserController extends AppController
             $user = $this->userRepository->getUserByEmail($email);
         }
 
+        if($user==null)
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/profile");
+        }
+
         $ban = strtotime($user->getBanDate());
         if(date('Y-m-d',$ban)<date("Y-m-d"))
         {

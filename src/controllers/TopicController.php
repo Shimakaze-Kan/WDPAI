@@ -204,6 +204,12 @@ class TopicController extends AppController
         $id = $_GET['id'];
         $topic = $this->topicRepository->getTopic($id);
 
+        if($topic==null)
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/featured");
+        }
+
         $this->render('tea', ['title' => $topic->getTitle()]);
     }
 }
