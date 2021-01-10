@@ -40,9 +40,9 @@
             <table id="myTable">
                 <tbody>
                 <tr>
-                    <td>Country Code (ISO-3166-1-ALPHA2)</td>
+                    <td>ISO-3166-1-ALPHA2</td>
                     <td>Country Name</td>
-                    <td>Value <button id="add-new" class="purple-button">ADD NEW</button></td>
+                    <td><span>Value</span> <button id="add-new" class="purple-button">ADD NEW</button></td>
                 </tr>
                 </tbody>
             </table>

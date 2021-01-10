@@ -166,9 +166,9 @@ countries.forEach(function(item){
             let tbody = $('#myTable').children('tbody');
             tbody.empty();
             tbody.append(                '                <tr>\n' +
-                '                    <td>Country Code (ISO-3166-1-ALPHA2)</td>\n' +
+                '                    <td>ISO-3166-1-ALPHA2</td>\n' +
                 '                    <td>Country Name</td>\n' +
-                '                    <td>Value <button id="add-new" class="purple-button">ADD NEW</button></td>\n' +
+                '                    <td><span>Value</span> <button id="add-new" class="purple-button">ADD NEW</button></td>\n' +
                 '                </tr>\n');
             $('#add-new').click(function (){
                 $('#full-popup').fadeIn(300);
@@ -288,7 +288,7 @@ countries.forEach(function(item){
                     data: {id: countryCode, value: word, topicId: topicId},
                     success: function (response) {
                         if(response=="success") {
-                            names[countryId] = word;
+                            names[countryCode] = word;
                             updateValues();
                             updateTable();
                             updateTableHeight();
