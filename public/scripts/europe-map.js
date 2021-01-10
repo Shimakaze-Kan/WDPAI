@@ -172,6 +172,9 @@ countries.forEach(function(item){
                 '                </tr>\n');
             $('#add-new').click(function (){
                 $('#full-popup').fadeIn(300);
+                $('#country-predicate-input').val('');
+                $('#new-word-input-full').val('');
+                $('#value-for-country').text('-');
                 $('#country-predicate-input').focus();
             });
                 for (let e in names) {
