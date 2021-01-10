@@ -53,22 +53,13 @@
         <div id="messageboxq">
         </div>
 
-        <!--<div id="selectDiv">
-        <select id="selectCountries" multiple="multiple" style="width:100px;height : 200px">
-            <option value="1">item 1</option>
-            <option value="2">item 2</option>
-            <option value="3">item 3</option>
-            <option value="4">item 4</option>
-        </select>
-        </div>-->
-
 
         <div id="minimal-popup" class="background-shade">
             <div class="enter-data-popup">
                 ENTER NEW VALUE FOR
                 <span id="country-name"></span>
                 <div class="update-country">
-                    <input id="new-word-input" type="text" placeholder="New word" >
+                    <input id="new-word-input" type="text" placeholder="New word" maxlength="50">
                     <div class="login-buttons-container">
                     <button id="send-updated-country" type="submit" >SEND</button>
                     <button id="close-enter-data-popup" type="submit" >CLOSE</button>
@@ -83,7 +74,7 @@
                     <input id="country-predicate-input" type="text" placeholder="Start typing country name...">
                     <span>Country name:</span>
                     <span id="value-for-country">-</span>
-                    <input id="new-word-input-full" type="text" placeholder="New word" >
+                    <input id="new-word-input-full" type="text" placeholder="New word" maxlength="50">
                     <div class="login-buttons-container">
                         <button id="send-full-updated-country" type="submit" >SEND</button>
                         <button id="close-full-enter-data-popup" type="submit" >CLOSE</button>

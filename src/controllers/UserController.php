@@ -21,9 +21,8 @@ class UserController extends AppController
         if(!isset($_SESSION['user_id'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/index");
+            exit();
         }
-
-        $topicRepository = new TopicRepository();
 
         if(!$this->isGet())
         {
@@ -32,8 +31,15 @@ class UserController extends AppController
 
         $user = null;
 
-        if(!empty($_GET))
+        if(isset($_GET['id']))
         {
+            if(!ctype_digit(strval($_GET['id'])))
+            {
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/profile");
+                exit();
+            }
+
             $id = $_GET['id'];
             $user = $this->userRepository->getUserById($id);
         }
@@ -47,6 +53,7 @@ class UserController extends AppController
         {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/profile");
+            exit();
         }
 
         $ban = strtotime($user->getBanDate());
@@ -60,6 +67,7 @@ class UserController extends AppController
         }
 
 
+        $topicRepository = new TopicRepository();
         $details = $this->userRepository->getUsersDetails($user->getId());
         $history = $topicRepository->getUsersTopics($user->getId());
 
@@ -77,7 +85,8 @@ class UserController extends AppController
             $this->render('login');
         }
 
-        if($_SESSION['user_role']!='mode') {
+        if($_SESSION['user_role']!='mode' || $_POST['userId'] == $_SESSION['user_id'])
+        {
             echo 'failure';
             return;
         }
@@ -125,6 +134,7 @@ class UserController extends AppController
         if(!isset($_SESSION['user_id'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/index");
+            exit();
         }
 
         if(!$this->isPost())

@@ -54,11 +54,10 @@ class AppController
 
     protected function checkCurrentUserActiveStatus() : void
     {
-        if(!$this->userRepository->getUserActiveStatus($_SESSION['user_id']))
+        if(isset($_SESSION['user_id']) && !$this->userRepository->getUserActiveStatus($_SESSION['user_id']))
         {
             setcookie("user", "", time() - 3600);
             session_destroy();
-            $url = "http://$_SERVER[HTTP_HOST]";
         }
     }
 }

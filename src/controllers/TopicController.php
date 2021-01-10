@@ -99,7 +99,7 @@ class TopicController extends AppController
         $topicId = $_POST['topicId'];
 
 
-        if($value=='' || $countryId=='' || $topicId=='')
+        if($value=='' || $countryId=='' || $topicId=='' || strlen($value) > 50)
         {
             echo 'failure';
             return;
@@ -149,6 +149,7 @@ class TopicController extends AppController
         if(!isset($_SESSION['user_id'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/index");
+            exit();
         }
 
         if(!$this->isGet())
@@ -167,6 +168,7 @@ class TopicController extends AppController
         if(!isset($_SESSION['user_id'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/index");
+            exit();
         }
 
         if(!$this->isGet())
@@ -193,12 +195,20 @@ class TopicController extends AppController
 
         if(!isset($_SESSION['user_id'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/index");;
+            header("Location: {$url}/index");
+            exit();
         }
 
         if(!$this->isGet())
         {
             return $this->render('featured');
+        }
+
+        if(!isset($_GET['id']) || !ctype_digit(strval($_GET['id'])))
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/featured");
+            exit();
         }
 
         $id = $_GET['id'];
@@ -208,6 +218,7 @@ class TopicController extends AppController
         {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/featured");
+            exit();
         }
 
         $this->render('tea', ['title' => $topic->getTitle()]);

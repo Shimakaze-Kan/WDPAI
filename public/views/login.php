@@ -33,10 +33,16 @@
                     <input name="password" type="password" placeholder="password">
                 </div>
                 <div class="login-buttons-container">
-                    <button type="submit">LOGIN</button>
+                    <button id="login-button" type="submit">LOGIN</button>
                     <button type="button" onclick="location.href='registration'">SIGN UP</button>
                 </div>
             </form>    
         </div>
     </div>
 </body>
+<script>
+    if(<?php echo $cookie ?>)
+    {
+        $('#login-button').click();
+    }
+</script>

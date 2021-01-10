@@ -44,7 +44,7 @@ countries.forEach(function(item){
         $('#send-updated-country').click(function (){
             var word = $('#new-word-input').val();
 
-            if(word=='')
+            if(word=='' > word.length > 50)
             {
                 showMessage(false);
             }
@@ -57,11 +57,14 @@ countries.forEach(function(item){
                     type: "POST",
                     data: {id: countryId, value: word, topicId: topicId},
                     success: function (response) {
-                        names[countryId] = word;
+                        if(response=="success") {
+                            names[countryId] = word;
+                            updateValues();
+                            updateTable();
+                            updateTableHeight();
+                        }
+
                         showMessage(response == "success");
-                        updateValues();
-                        updateTable();
-                        updateTableHeight();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         showMessage(false);
@@ -271,7 +274,7 @@ countries.forEach(function(item){
                 return;
             }
 
-            if(word==='')
+            if(word==='' || word.length > 50)
             {
                 showMessage(false);
             }
@@ -284,11 +287,14 @@ countries.forEach(function(item){
                     type: "POST",
                     data: {id: countryCode, value: word, topicId: topicId},
                     success: function (response) {
-                        names[countryCode] = word;
+                        if(response=="success") {
+                            names[countryId] = word;
+                            updateValues();
+                            updateTable();
+                            updateTableHeight();
+                        }
+
                         showMessage(response == "success");
-                        updateValues();
-                        updateTable();
-                        updateTableHeight();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         showMessage(false);

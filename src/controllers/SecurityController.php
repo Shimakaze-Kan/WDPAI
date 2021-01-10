@@ -15,7 +15,6 @@ class SecurityController extends AppController
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/featured");
         }
-        $hmac_cookie = new HMAC_Cookie();
 
         $userRepository = new UserRepository();
 
@@ -26,6 +25,22 @@ class SecurityController extends AppController
 
         $email = $_POST['email'];
         $password = $_POST['password'];
+
+        $hmac_cookie = new HMAC_Cookie();
+        if(isset($_COOKIE['user'])) {
+            $decryptionResult = $hmac_cookie->decryptCookieData('user');
+            if ($decryptionResult[0] == false) {
+                return $this->render('login', ['messages' => ['Unauthorized access, modified cookie']]);
+            }
+
+            $cookieData = explode(';',$decryptionResult[1]);
+            $email = $cookieData[0];
+            //$_SESSION['user_id'] = $cookieData[1];
+            //$_SESSION['user_role'] = $cookieData[2];
+
+            //$url = "http://$_SERVER[HTTP_HOST]";
+            //header("Location: {$url}/featured");
+        }
 
         $user = $userRepository->getUserByEmail($email);
 
@@ -39,7 +54,7 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['wrong email']]);
         }
 
-        if(!password_verify($password,  $user->getPassword()))
+        if(!isset($_COOKIE['user']) && !password_verify($password,  $user->getPassword()))
         {
             return $this->render('login', ['messages' => ['wrong password']]);
         }
