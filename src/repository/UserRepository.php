@@ -62,7 +62,7 @@ class UserRepository extends Repository
     public function getUsersDetails(int $id)
     {
         $stmt = $this->database->connect()->prepare('
-            select country, about, avatar_url from users_details
+            select about, avatar_url from users_details
             where id=(select id_user_details from users where id=:id)
         ');
 
@@ -77,13 +77,15 @@ class UserRepository extends Repository
         $date = new DateTime();
 
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public.users_details (country)
-            VALUES (:country)
+            INSERT INTO public.users_details (about, avatar_url)
+            VALUES (:about, :avatar)
             RETURNING id;
         ');
 
-        $country = "Finland";
-        $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+        $about = "";
+        $avatar = "";
+        $stmt->bindParam(':about', $about, PDO::PARAM_STR);
+        $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
         $result = $stmt->execute();
         $user_details = $stmt->fetch(PDO::FETCH_ASSOC);
         $user_details_id = $user_details['id'];

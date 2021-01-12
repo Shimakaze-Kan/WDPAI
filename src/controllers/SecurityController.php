@@ -112,6 +112,12 @@ class SecurityController extends AppController
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            return $this->render('registration', ['messages' => ['The email address doesn\'t look right']]);
+        }
+
         $user = $userRepository->getUserByEmail($email);
 
         if($user)
@@ -119,7 +125,7 @@ class SecurityController extends AppController
             return $this->render('registration', ['messages' => ['User already exist!']]);
         }
 
-        $newUser = new User($email, $password, 0);
+        $newUser = new User($email, $password);
         $result = $userRepository->addUser($newUser);
 
 

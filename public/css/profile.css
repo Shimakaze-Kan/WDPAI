@@ -27,6 +27,7 @@ tr:first-of-type {
 #profile-content {
     display: flex;
     flex-direction: row;
+    overflow-x: auto;
 }
 
 #info-container {
