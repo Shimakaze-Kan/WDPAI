@@ -186,6 +186,27 @@
     .small-logo {
         font: normal normal normal 3em Rubik;
     }
+    #registration-container{
+        scale: 1.5;
+    }
+
+    .logo {
+        transform: rotate(-90deg);
+        translate: -25%;
+    }
+
+    .login-buttons-container > button {
+        margin: 1em auto;
+    }
+
+    .login-container {
+        scale: 2;
+    }
+
+    form.login {
+        height: unset;
+        min-height: unset;
+    }
 }
 
 @media only screen and (min-device-height: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
@@ -234,6 +255,10 @@
 
     #shadow-menu {
         visibility: hidden;
+    }
+
+    #registration-container{
+        scale: 1.5;
     }
 }
 

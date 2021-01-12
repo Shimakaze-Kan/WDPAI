@@ -39,31 +39,13 @@
                  
                         <div class="login-caption-container">
                             REPEAT PASSWORD
-                            <input <!--name="password"--> type="password" placeholder="password">
-                        </div>
-                   
-                        <div class="login-caption-container">
-                            COUNTRY
-                            <select>
-                                <option>Germany</option>
-                                <option>Poland</option>
-                                <option>Finland</option>
-                            </select>
-                        </div>
-                
-                    <!--<li>
-                        <div class="textarea-caption-container">
-                        ABOUT
-                        <textarea>
-
-                        </textarea>
+                            <input type="password" placeholder="password">
                         </div>
 
-                    </li>-->
 
                    <label class="checkbox">
                             <input name="checkbox" type="checkbox" checked/>
-                            <span>Don't show my email to other users</span>
+                            <span>I accept the terms and conditions</span>
                         </label>
                   
                     <div class="login-buttons-container">

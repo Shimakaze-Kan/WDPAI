@@ -151,14 +151,14 @@ countries.forEach(function(item){
         $('#download-csv-button').click(function ()
         {
             let csvContent = "data:text/csv;charset=utf-8,";
-            for(var e in names)
+            for(let e in names)
             {
                 csvContent+="\n"+e+','+names[e];
             }
-            var encodedUri = encodeURI(csvContent);
-            var link = document.createElement("a");
+            const encodedUri = encodeURI(csvContent);
+            let link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", title+".csv");
+            link.setAttribute("download", $('#title-text').text()+".csv");
             link.click();
         });
 
