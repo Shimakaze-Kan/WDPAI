@@ -94,6 +94,14 @@
             }?>
             </div>
 
+            <?php
+            if($about!="") {
+                echo '<div id="about">'.
+                    '<span class="bigfont">About:</span>'.
+               '<span id="about-desc">'. $about. '<span/>'.
+            '</div>';
+            }
+            ?>
 
         <div id="data-table">
             <span class="bigfont">History:</span>

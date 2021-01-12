@@ -28,6 +28,7 @@ tr:first-of-type {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
+    min-height: 14em;
 }
 
 #info-container {
@@ -152,4 +153,17 @@ label {
     font-size: 3em;
     bottom: 0;
     right: 0;
+}
+
+#about-desc {
+    border-color: #707070;
+    border-style: dotted;
+    font: normal normal normal 1em Rubik;
+    word-break: break-word;
+    padding: 0.2em;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
 }
