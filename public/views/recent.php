@@ -7,7 +7,7 @@
             charset="utf-8"></script>
 
     <!--<script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script type="text/javascript" src="public/scripts/menu.js"></script>
     <script type="text/javascript" src="public/scripts/recent.js"></script>
     <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>

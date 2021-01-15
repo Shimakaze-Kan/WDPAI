@@ -33,7 +33,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    word-break: break-all;
+    word-break: break-word;
     background-color: rgba(243, 241, 239, 0.2);
     border-left-color: black;
     border-left-style: solid;
