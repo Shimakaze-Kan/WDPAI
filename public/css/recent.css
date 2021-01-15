@@ -45,7 +45,7 @@
     flex-direction: column;
     font: normal normal normal 1em Rubik;
     align-items: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
 }
 

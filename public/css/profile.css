@@ -39,7 +39,7 @@ tr:first-of-type {
 #profile-container {
     height: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: grid;
     background-color: #F5F5F5;
     align-content: space-between;
