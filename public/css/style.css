@@ -329,3 +329,23 @@ margin-bottom: 0.5em;
     text-align: center;
     line-height: 50vh;
 }
+
+.no-valid {
+    border-color: red;
+}
+
+.alert-messages {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(254, 241, 96, 1);
+    border-width: 0.1em;
+    border-color: rgb(247, 202, 24);
+    border-style: solid;
+    border-radius: 0 0 0.3em 0.3em;
+    font: normal normal normal 2em Rubik;
+    padding: 0.5em;
+    z-index: 999;
+    text-align: center;
+    display: none;
+}
