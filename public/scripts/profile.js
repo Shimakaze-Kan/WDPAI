@@ -110,7 +110,18 @@ jQuery(function ($) {
            success: function (response) {
                if(response.state == 'success') {
                    showMessage(true);
+                   if(!$('#about').length)
+                   {
+                       $('#profile-content').after("<div id=\"about\">\n" +
+                           "                       <span class=\"bigfont\">About:</span>\n" +
+                           "                       <span id=\"about-desc\"><span/>\n" +
+                           "                       </div>");
+                   }
                    $('#about-desc').text(about);
+                   if(about.length == 0)
+                   {
+                       $('#about').remove();
+                   }
                    $('.avatar').attr('src', avatar_url);
                }
                else
