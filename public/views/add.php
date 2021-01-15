@@ -19,12 +19,7 @@
     <title>LOGIN PAGE</title>
 
 </head>
-<style>
-    .checkbox {
-        margin: initial;
-    }
-    }
-</style>
+
 <body>
 <div class="base-container">
     <div class="alert-messages"><span></span></div>
@@ -49,7 +44,6 @@
         <span class="bigfont" id="upload-text">Upload Image</span>
             <div>
         <input id="upload-input" type="text" placeholder="Paste URL">
-            <!--<button class="purple-button">BROWSE</button>-->
             </div>
 
             <div class="preview-container">

@@ -121,3 +121,7 @@ main > div{
     padding: 0.5em;
     z-index: 999;
 }
+
+.checkbox {
+    margin: initial;
+}

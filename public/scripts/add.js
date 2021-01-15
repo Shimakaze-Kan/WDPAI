@@ -28,7 +28,7 @@ $('#preview').mouseover(function (){
     }
 });
 
-    $('#preview').mouseout(function () {
+    $('#preview').mouseleave(function () {
         $('#preview-topic-container').fadeOut('fast'); //.css({ 'display': 'none' });
     });
 
@@ -50,7 +50,7 @@ $('#preview').mouseover(function (){
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
 
-    $('#title-text').mouseout(function () {
+    $('#title-text').mouseleave(function () {
         $('#DivToShow').fadeOut('fast'); //.css({ 'display': 'none' });
     });
 
@@ -60,7 +60,7 @@ $('#preview').mouseover(function (){
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
 
-    $('#upload-text').mouseout(function () {
+    $('#upload-text').mouseleave(function () {
         $('#DivToShow').hide(); //.css({ 'display': 'none' });
     });
 
@@ -77,12 +77,14 @@ $('#preview').mouseover(function (){
 
             if(title_text.length > 50 || title_text.length==0)
             {
-                $('#title-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+                $('#title-input').shake();
+                $('#title-text').shake();
                 showMessage(false);
             }
             else if(upload_text.length > 16384)
             {
-                $('#upload-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+                $('#upload-input').shake();
+                $('#upload-text').shake();
                 showMessage(false);
             }
             else {
@@ -114,7 +116,7 @@ $('#preview').mouseover(function (){
         }
         else
         {
-            $('.checkbox').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+            $('.checkbox').shake();
             showMessage(false);
         }
     });
@@ -133,4 +135,16 @@ function showMessage(result)
         $('#messageboxq').css("background-color"," rgba(240, 52, 52, 0.9)");
     }
     $( "#messageboxq" ).slideDown( 300 ).delay( 5000 ).slideUp( 400 );
+}
+
+jQuery.fn.shake = function(interval,distance,times){
+    interval = typeof interval == "undefined" ? 100 : interval;
+    distance = typeof distance == "undefined" ? 10 : distance;
+    times = typeof times == "undefined" ? 3 : times;
+    var jTarget = $(this);
+    jTarget.css('position','relative');
+    for(var iter=0;iter<(times+1);iter++){
+        jTarget.animate({ left: ((iter%2==0 ? distance : distance*-1))}, interval);
+    }
+    return jTarget.animate({ left: 0},interval);
 }
