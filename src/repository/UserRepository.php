@@ -72,6 +72,20 @@ class UserRepository extends Repository
         return $details;
     }
 
+    public function updateUsersDetails(int $id, string $avatar_url, string $about)
+    {
+        $stmt = $this->database->connect()->prepare('
+            update public.users_details 
+            set avatar_url = :avatar_url, about = :about
+            where id=(select id_user_details from users where id=:id)
+        ');
+
+        $stmt->bindParam(':avatar_url', $avatar_url, PDO::PARAM_STR);
+        $stmt->bindParam(':about', $about, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
     public function addUser(User $user)
     {
         $date = new DateTime();

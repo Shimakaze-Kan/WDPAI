@@ -82,4 +82,52 @@ jQuery(function ($) {
            }
        });
    });
+
+   $('i.fas.fa-cog').click(function (){
+       if($('.edit-profile').is(":hidden")) {
+           $('.edit-profile > input').val($('#avatar-container > img').attr('src'));
+           $('.edit-profile > textarea').val($('#about-desc').text());
+           $('.edit-profile').fadeIn(300);
+       }else
+       {
+           $('.edit-profile').fadeOut(300);
+       }
+   });
+
+   $('#close-edit-profile').click(function (){
+       $('.edit-profile').fadeOut(300);
+   });
+
+   $('#send-updated-profile-details').click(function (){
+       const avatar_url = $('.edit-profile > input').val();
+       const about = $('.edit-profile > textarea').val();
+
+       $.ajax({
+           url: "updateUsersDetails",
+           type: "POST",
+           data: {avatar_url: avatar_url, about: about},
+           dataType: "json",
+           success: function (response) {
+               if(response.state == 'success') {
+                   showMessage(true);
+                   $('#about-desc').text(about);
+                   $('.avatar').attr('src', avatar_url);
+               }
+               else
+               {
+                   showMessage(false);
+                   if('message' in response)
+                   {
+                       $('.alert-messages > span').text(response.message);
+                       $('.alert-messages').slideDown( 300 ).delay( 5000 ).slideUp( 400 );
+                   }
+               }
+           },
+           error: function (jqXHR, textStatus, errorThrown) {
+               showMessage(false);
+           }
+       });
+
+       $('.edit-profile').fadeOut(300);
+   });
 });

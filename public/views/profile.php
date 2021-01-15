@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style-mobile.css">
     <link rel="stylesheet" type="text/css" href="public/css/questions-mobile.css">
     <link rel="stylesheet" type="text/css" href="public/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="public/css/profile-mobile.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
             charset="utf-8"></script>
 
@@ -29,13 +30,29 @@
 <body>
 <div class="base-container">
     <?php include("nav.php"); ?>
+    <div class="alert-messages"><span>'.$alertMessage.'</span></div>
     <main>
         <header>
             <div class="title-bar">
                 <i class="fas fa-bars" id="burger"></i>
                 ACCOUNT
+                <?php
+                if($isOwnUserProfile) {
+                    echo '<i title = "Edit profile" class="fas fa-cog" ></i >';
+                 }
+                ?>
             </div>
         </header>
+        <div class="edit-profile">
+            <span class="bigfont">Avatar url</span>
+            <input placeholder="Paste url to image">
+            <span class="bigfont">About</span>
+            <textarea rows="3" maxlength="500" placeholder="Write something"></textarea>
+            <div>
+            <button class="purple-button" id="send-updated-profile-details">UPDATE</button>
+            <button class="purple-button" id="close-edit-profile">CLOSE</button>
+            </div>
+        </div>
         <div id="messageboxq">
         </div>
         <div id="shadow-menu">Close</div>

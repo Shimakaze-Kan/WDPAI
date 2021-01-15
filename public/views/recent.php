@@ -61,7 +61,7 @@
 
                 if($isMode)
                 {
-                    echo '<div id="delete-'.$value['topicId'].'" style="color: red;background-color: rgba(243, 241, 239, 0.2);margin-top: inherit;width: 5%;display: flex;flex-direction: column;"><span class="timer-span" id="timer-'.$value['topicId'].'"></span><span class="stop-timer-button" id="stop-'.$value['topicId'].'">stop</span> <div id="trash-bin-'.$value['topicId'].'"><i class="fas fa-trash-alt" ></i ></div></div >';
+                    echo '<div id="delete-'.$value['topicId'].'" style="color: red;background-color: rgba(243, 241, 239, 0.2);margin-top: inherit;width: 5%;display: flex;flex-direction: column;"><span class="timer-span" id="timer-'.$value['topicId'].'"></span><span class="stop-timer-button" id="stop-'.$value['topicId'].'">stop</span> <div id="trash-bin-'.$value['topicId'].'"><i class="fas fa-trash-alt" title="delete topic"></i ></div></div >';
                 }
 
                 echo '</div>';

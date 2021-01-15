@@ -72,8 +72,9 @@ class UserController extends AppController
         $history = $topicRepository->getUsersTopics($user->getId());
 
         $isMode = $_SESSION['user_role'] == 'mode';
+        $isOwnUserProfile = $_SESSION['user_id'] == $_GET['id'] || !isset($_GET['id']);
 
-        return $this->render('profile', (['email' => $user->getEmail(), 'id' => $user->getId(),'topics' => $history, 'role' => $user->getRole(), 'active'=>$user->isActive(), 'isMode'=>$isMode, 'ban'=>$ban]+$details));
+        return $this->render('profile', (['email' => $user->getEmail(), 'id' => $user->getId(),'topics' => $history, 'role' => $user->getRole(), 'active'=>$user->isActive(), 'isMode'=>$isMode, 'ban'=>$ban, 'isOwnUserProfile' => $isOwnUserProfile]+$details));
     }
 
     public function banUser()
@@ -144,6 +145,43 @@ class UserController extends AppController
 
         $id = $_SESSION['user_id'];
         $this->userRepository->updateLastActivity($id);
+    }
+
+    public function updateUsersDetails()
+    {
+        $this->checkCurrentUserActiveStatus();
+
+        $response = array('state' => 'failure');
+        if(!$this->isPost())
+        {
+            $this->render('login');
+        }
+
+        if(!isset($_SESSION['user_id'])) {
+            echo json_encode($response);
+            return;
+        }
+
+        if(strlen($_POST['avatar_url']) > 255)
+        {
+            $response += ['message' => 'Avatar url is too long (provided: '.strlen($_POST['avatar_url']).' characters, max: 255 characters)'];
+            echo json_encode($response);
+            return;
+        }
+        else if (strlen($_POST['about']) > 500)
+        {
+            $response += ['message' => 'About is too long (provided: '.strlen($_POST['avatar_url']).' characters, max: 500 characters)'];
+            echo json_encode($response);
+            return;
+        }
+        else {
+            $result = $this->userRepository->updateUsersDetails($_SESSION['user_id'], $_POST['avatar_url'] ?? "", $_POST['about'] ?? "");
+            if ($result) {
+                $response['state'] = 'success';
+            }
+        }
+
+        echo json_encode($response);
     }
 
 }

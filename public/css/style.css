@@ -78,7 +78,7 @@ button {
     margin: auto;
 }
 
-input {
+input, textarea {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 2px solid #6F7173;
     border-radius: 10px;

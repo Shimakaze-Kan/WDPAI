@@ -22,6 +22,7 @@ Routing::post('deleteTopic', 'TopicController');
 Routing::post('banUser', 'UserController');
 Routing::post('unbanUser', 'UserController');
 Routing::post('updateLastActivity', 'UserController');
+Routing::post('updateUsersDetails', 'UserController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('logout', 'SecurityController');
