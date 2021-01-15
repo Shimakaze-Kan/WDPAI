@@ -18,8 +18,10 @@ class TopicController extends AppController
     {
         $this->checkCurrentUserActiveStatus();
 
+        $response = array('state' => 'failure');
+
         if(!isset($_SESSION['user_id'])) {
-            echo 'failure';
+            echo json_encode($response);
             return;
         }
 
@@ -38,13 +40,21 @@ class TopicController extends AppController
 
         if(strlen($title)>60)
         {
-            echo 'failure';
+            echo json_encode($response);
             return;
         }
 
         if(strlen($url)>16384)
         {
-            echo 'failure';
+            echo json_encode($response);
+            return;
+        }
+
+        $result = $this->topicRepository->getTopicByName($title);
+        if($result)
+        {
+            $response += ["message" => "Topic already exist!"];
+            echo json_encode($response);
             return;
         }
 
@@ -52,7 +62,10 @@ class TopicController extends AppController
         $this->topicRepository->addTopic($topic);
 
 
-        echo 'success '.substr($_SERVER['SERVER_NAME'],0,-1)."featured";
+        $response['state'] = 'success';
+        $response += ["url" => substr($_SERVER['SERVER_NAME'],0,-1)."featured"];
+        echo json_encode($response);
+        return;
     }
 
     public function deleteTopic()

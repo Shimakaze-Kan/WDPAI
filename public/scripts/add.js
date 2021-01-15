@@ -90,15 +90,19 @@ $('#preview').mouseover(function (){
                     url: "addTopic",
                     type: "POST",
                     data: {title: title_text, url: upload_text},
+                    dataType: "json",
                     success: function (response) {
-                        if(response == 'failure')
+                        if(response.state == 'failure')
                         {
-                            showMessage(true);
+                            showMessage(false);
+                            $('.alert-messages').children().text(response.message);
+                            $('.alert-messages').slideDown( 300 ).delay( 5000 ).slideUp( 400 );
                         }
                         else
                         {
-                            var url = response.substring(8, response.length);
-                            window.location=url;
+                            if('url' in response) {
+                                window.location = response.url;
+                            }
                         }
 
                     },

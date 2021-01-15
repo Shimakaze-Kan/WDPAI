@@ -12,6 +12,11 @@
     <div class="container">
 
         <?php
+        if(isset($cookie))
+        {
+            echo '<span class="cookie"></span>';
+        }
+
         if(isset($messages))
         {
             $alertMessage = "";
@@ -44,9 +49,3 @@
         </div>
     </div>
 </body>
-<script>
-    if(<?php echo $cookie ?>)
-    {
-        $('#login-button').click();
-    }
-</script>

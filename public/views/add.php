@@ -27,6 +27,7 @@
 </style>
 <body>
 <div class="base-container">
+    <div class="alert-messages"><span></span></div>
     <?php include("nav.php"); ?>
     <div id="messageboxq"></div>
         <div id="DivToShow"></div>
@@ -38,6 +39,7 @@
                 ADD NEW TOPIC
             </div>
         </header>
+
         <div id="shadow-menu">Close</div>
         <div>
         <div class="add-container">

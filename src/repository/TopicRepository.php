@@ -30,6 +30,29 @@ class TopicRepository extends Repository
         );
     }
 
+    public function getTopicByName(string $title): ?Topic
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.topics WHERE title = :title
+        ');
+
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->execute();
+        $topic = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($topic == false)
+        {
+            return null;
+        }
+
+        return new Topic(
+            $topic['title'],
+            $topic['img_url'],
+            $topic['like'],
+            $topic['dislike']
+        );
+    }
+
     public function addTopic(Topic $topic): void
     {
         $date = new DateTime();

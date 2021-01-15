@@ -198,6 +198,10 @@ letter-spacing: 0px;
 color: #000000B8;
 }
 
+.cookie {
+    display: none;
+}
+
 .registration-container {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 10px 10px #00000029;
