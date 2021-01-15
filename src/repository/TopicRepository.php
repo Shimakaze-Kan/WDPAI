@@ -104,7 +104,7 @@ class TopicRepository extends Repository
     public function getUsersTopics(int $userId)
     {
         $stmt = $this->database->connect()->prepare('
-        SELECT title, created_at, id FROM public.topics WHERE id_assigned_by=:userId
+        SELECT title, created_at, id FROM public.topics WHERE id_assigned_by=:userId ORDER BY created_at DESC
         ');
 
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
