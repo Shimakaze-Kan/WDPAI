@@ -113,7 +113,7 @@ countries.forEach(function(item){
         });
 
         $('path').click(function () {
-            if(!isMobile) {
+            if(window.innerWidth > 420) {
                 var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
                 //alert(countries[country]);
                 countryId = country;
@@ -126,7 +126,7 @@ countries.forEach(function(item){
         });
 
         $('path').mouseover(function () {
-            if(!isMobile) {
+            if(window.innerWidth > 420) {
                 var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
                 $('#country-text').text(countries[country]);
 

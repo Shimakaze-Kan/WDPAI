@@ -161,6 +161,110 @@
     }
 
 }
+@media only screen and (min-device-width: 540px) and (min-device-height: 720px) and (orientation:portrait) {
+    main {
+        font-size: 1.5em;
+    }
+
+    #slide-nav {
+
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        /*transition: 0.5s;*/
+    }
+
+    #burger {
+        visibility: visible;
+    }
+
+    li > .button {
+        font: normal normal bold 2em Arial;
+    }
+
+    .small-logo {
+        font: normal normal normal 3em Rubik;
+    }
+    #registration-container{
+        transform: scale(1.8);
+    }
+
+    .logo {
+        transform: rotate(-90deg);
+        translate: -25%;
+    }
+
+    .login-buttons-container > button {
+        margin: 1em auto;
+    }
+
+    .login-container {
+        scale: 2;
+    }
+
+    form.login {
+        height: unset;
+        min-height: unset;
+        transform: scale(1.7);
+    }
+}
+
+@media only screen and (min-device-height: 540px) and (min-device-width: 720px) and (orientation:landscape) {
+
+    #slide-nav {
+        position: relative;
+    }
+
+    form.login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: left;
+        width: 70%;
+        height: 40vh;
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 10px 10px #00000029;
+        border: 1px solid #707070;
+        border-radius: 26px 26px 0 26px;
+        opacity: 0.96;
+        min-width: 336px;
+        min-height: 336px;
+    }
+
+    #slide-nav{
+        visibility: visible !important;
+    }
+
+    li {
+        visibility: visible !important;
+    }
+
+    ul {
+        visibility: visible !important;
+        display: block !important;
+    }
+    button {
+        visibility: visible !important;
+    }
+
+    .small-logo {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    #shadow-menu {
+        visibility: hidden;
+    }
+
+    #registration-container{
+        scale: 1.5;
+    }
+}
 
 @media only screen and (min-device-width: 768px) and (max-device-height: 1024px) and (orientation:portrait) {
     #slide-nav {
@@ -187,7 +291,7 @@
         font: normal normal normal 3em Rubik;
     }
     #registration-container{
-        scale: 1.5;
+        transform: scale(1.5);
     }
 
     .logo {
@@ -258,9 +362,10 @@
     }
 
     #registration-container{
-        scale: 1.5;
+        transform: scale(1.5);
     }
 }
+
 
 @media only screen and (max-device-width: 420px) and (orientation:portrait){
     li > .button {

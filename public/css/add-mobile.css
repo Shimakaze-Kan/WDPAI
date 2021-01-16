@@ -14,3 +14,24 @@
     }
 
 }
+
+@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) and (orientation: portrait) {
+    .preview-container {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-device-width: 1366px) and (max-device-height:  1024px) and (orientation: landscape) {
+    .preview-container {
+        display: none !important;
+    }
+}
+/*
+@media only screen and (min-device-width: 420px) and (max-device-width: 1366px) and (orientation: landscape) {
+    .add-container {
+        transform: scale(1.2);
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5em;
+    }
+}*/
