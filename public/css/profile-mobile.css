@@ -1,6 +1,5 @@
-@media only screen and (max-device-width: 420px)
-{
-    .edit-profile{
+@media only screen and (max-device-width: 420px) {
+    .edit-profile {
         top: 10%;
         left: auto;
         min-width: unset;
@@ -19,15 +18,15 @@
     }
 }
 
-@media only screen and (min-device-width: 540px) and (min-device-height: 720px) and (orientation:portrait) {
+@media only screen and (min-device-width: 540px) and (min-device-height: 720px) and (orientation: portrait) {
     .edit-profile {
         -webkit-transform-origin-x: right;
         transform: scale(1.2);
     }
 }
 
-@media only screen and (min-device-width: 1366px) and (min-device-height: 1024px) and (orientation:landscape){
-    .edit-profile{
+@media only screen and (min-device-width: 1366px) and (min-device-height: 1024px) and (orientation: landscape) {
+    .edit-profile {
         transform: scale(1.5);
     }
 }

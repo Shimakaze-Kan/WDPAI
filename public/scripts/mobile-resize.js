@@ -3,7 +3,7 @@ let isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.user
 if(isMobile) {
     $(window).resize(onresize);
 
-    var wasLandscapeViewBefore = false;
+    let wasLandscapeViewBefore = false;
 
     function onresize() {
         let newViewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);

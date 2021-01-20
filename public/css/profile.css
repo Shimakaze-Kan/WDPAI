@@ -70,7 +70,7 @@ tr:first-of-type {
 }
 
 #rainbow_text_animated {
-    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+    background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -79,7 +79,7 @@ tr:first-of-type {
 }
 
 @keyframes rainbow_animation {
-    0%,100% {
+    0%, 100% {
         background-position: 0 0;
     }
 
@@ -93,6 +93,7 @@ tr:first-of-type {
     margin-left: 10px;
     margin-top: 10px;
 }
+
 label {
     font-weight: normal;
     font-size: 1em;
@@ -101,6 +102,7 @@ label {
     display: block;
     cursor: pointer;
 }
+
 [type="radio"] {
     border: 0;
     clip: rect(0 0 0 0);
@@ -111,6 +113,7 @@ label {
     position: absolute;
     width: 1px;
 }
+
 [type="radio"] + span:after {
     content: '';
     display: inline-block;
@@ -123,10 +126,12 @@ label {
     margin-left: 0.75em;
     transition: 0.5s ease all;
 }
+
 [type="radio"]:checked + span:after {
     background: #2EFFAA;
     box-shadow: 0 0 0 0.10em #AC0EE7;
 }
+
 [type="radio"]:focus + span::before {
     font-size: 1.2em;
     line-height: 1;
@@ -180,6 +185,10 @@ i.fas.fa-cog {
     cursor: pointer;
 }
 
+i.fas.fa-cog:hover {
+    color: lightgrey;
+}
+
 .edit-profile {
     position: fixed;
     top: 20%;
@@ -211,4 +220,12 @@ textarea {
     margin-top: 1em;
     display: flex;
     align-content: space-between;
+}
+
+.bigfont {
+    font: normal normal bold 2em Arial;
+    letter-spacing: 0px;
+    color: #000000B8;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
 }

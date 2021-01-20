@@ -86,9 +86,15 @@ class UserController extends AppController
             $this->render('login');
         }
 
-        if($_SESSION['user_role']!='mode' || $_POST['userId'] == $_SESSION['user_id'])
+        if($_SESSION['user_role']!='mode')
         {
-            echo 'failure';
+            echo json_encode(['state'=>'failure']);
+            return;
+        }
+
+        if(isset($_POST['userId'])=='null' || $_POST['userId'] == $_SESSION['user_id'])
+        {
+            echo json_encode(['state'=>'failure', 'message'=>'You cannot ban yourself']);
             return;
         }
 
@@ -106,7 +112,7 @@ class UserController extends AppController
         $this->userRepository->setUserBanDate($id, $newDate);
         $this->userRepository->changeUserActiveStatusUsingId($id, false);
 
-        echo 'success';
+        echo json_encode(['state'=>'success']);
     }
 
     public function unbanUser()

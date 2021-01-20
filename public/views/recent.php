@@ -8,10 +8,10 @@
 
     <!--<script src="https://kit.fontawesome.com/8fb5fa0f9e.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script type="text/javascript" src="public/scripts/menu.js"></script>
-    <script type="text/javascript" src="public/scripts/recent.js"></script>
-    <script type="text/javascript" src="public/scripts/mobile-resize.js"></script>
-    <script type="text/javascript" src="public/scripts/update-last-active.js"></script>
+    <script type="text/javascript" defer src="public/scripts/menu.js"></script>
+    <script type="text/javascript" defer src="public/scripts/recent.js"></script>
+    <script type="text/javascript" defer src="public/scripts/mobile-resize.js"></script>
+    <script type="text/javascript" defer src="public/scripts/update-last-active.js"></script>
     <title>CONNTLY🔌 - RECENT</title>
 
 </head>
@@ -31,37 +31,32 @@
             <?php
 
             $isMode = false;
-            if($_SESSION['user_role']=='mode') {
-                $isMode=true;
+            if ($_SESSION['user_role'] == 'mode') {
+                $isMode = true;
             }
 
-            foreach ($topics as $value)
-            {
-                echo '<div title="created at: '.$value['date'].'" class="minimal-topic-box">
-                <div class="action-click-box" id="topic-'.$value['topicId'].'">
-                <div class="img-mininal-box"> <img src="'.$value['img_url'].'" alt="No topic image" class="responsive-img"> </div>
-                <div class="title-mininal-box">'.$value['title'].'</div>
+            foreach ($topics as $value) {
+                echo '<div title="created at: ' . $value['date'] . '" class="minimal-topic-box">
+                <div class="action-click-box" id="topic-' . $value['topicId'] . '">
+                <div class="img-mininal-box"> <img src="' . $value['img_url'] . '" alt="No topic image" class="responsive-img"> </div>
+                <div class="title-mininal-box">' . $value['title'] . '</div>
                 </div>
                 <div class="details-mininal-box">
-                    <span title="Go to user\'s profile" id="user-id-'.$value['user_id'].'" class="';
-                    if($value['user_role']=='mode')
-                    {
-                        echo "rainbow_text_animated";
-                    }
-                    else
-                    {
-                        echo "author";
-                    }
-                    echo '">created by: '.$value['author'].'</span>
+                    <span title="Go to user\'s profile" id="user-id-' . $value['user_id'] . '" class="';
+                if ($value['user_role'] == 'mode') {
+                    echo "rainbow_text_animated";
+                } else {
+                    echo "author";
+                }
+                echo '">created by: ' . $value['author'] . '</span>
                     <div class="minimal-social-box">
-                    <i class="fas fa-heart"> '.$value['like'].'</i>
-                    <i class="fas fa-share-square"> '.$value['dislike'].'</i>
+                    <i class="fas fa-heart"> ' . $value['like'] . '</i>
+                    <i class="fas fa-share-square"> ' . $value['dislike'] . '</i>
                     </div>
                 </div>';
 
-                if($isMode)
-                {
-                    echo '<div id="delete-'.$value['topicId'].'" style="color: red;background-color: rgba(243, 241, 239, 0.2);margin-top: inherit;width: 5%;display: flex;flex-direction: column;"><span class="timer-span" id="timer-'.$value['topicId'].'"></span><span class="stop-timer-button" id="stop-'.$value['topicId'].'">stop</span> <div id="trash-bin-'.$value['topicId'].'"><i class="fas fa-trash-alt" title="delete topic"></i ></div></div >';
+                if ($isMode) {
+                    echo '<div id="delete-' . $value['topicId'] . '" style="color: red;background-color: rgba(243, 241, 239, 0.2);margin-top: inherit;width: 5%;display: flex;flex-direction: column;"><span class="timer-span" id="timer-' . $value['topicId'] . '"></span><span class="stop-timer-button" id="stop-' . $value['topicId'] . '">stop</span> <div id="trash-bin-' . $value['topicId'] . '"><i class="fas fa-trash-alt" title="delete topic"></i ></div></div >';
                 }
 
                 echo '</div>';

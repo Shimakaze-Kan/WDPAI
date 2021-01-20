@@ -118,6 +118,11 @@ class SecurityController extends AppController
             return $this->render('registration', ['messages' => ['The email address doesn\'t look right']]);
         }
 
+        if(strlen($password) < 4)
+        {
+            return $this->render('registration', ['messages' => ['Password is too short, should be at least 4 characters long']]);
+        }
+
         $user = $userRepository->getUserByEmail($email);
 
         if($user)

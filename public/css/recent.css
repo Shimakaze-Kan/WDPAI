@@ -92,7 +92,7 @@ i.fas.fa-trash-alt {
 }
 
 .rainbow_text_animated {
-    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+    background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -101,7 +101,7 @@ i.fas.fa-trash-alt {
 }
 
 @keyframes rainbow_animation {
-    0%,100% {
+    0%, 100% {
         background-position: 0 0;
     }
 

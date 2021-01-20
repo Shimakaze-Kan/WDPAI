@@ -14,8 +14,7 @@
     }
 }
 
-@media only screen and (max-device-width: 420px)
-{
+@media only screen and (max-device-width: 420px) {
     .map-container {
         height: 40%;
         position: relative;
@@ -50,7 +49,7 @@
         width: 95%;
     }
 
-    #country-predicate-input{
+    #country-predicate-input {
         width: 95%;
     }
 
@@ -67,7 +66,20 @@
     }
 
     .enter-data-popup, .enter-predicate-data-popup {
-        transform: scale(1.7);
+        transform: scale(1.2);
+        left: 1.5em;
+    }
+
+    .enter-predicate-data-popup {
+        width: 70%;
+    }
+
+    .enter-data-popup > div > div > button {
+        transform: scale(1.5);
+    }
+
+    .login-buttons-container > button {
+        transform: scale(1.5);
     }
 
     #show-table-view-button, #download-csv-button, #add-new {
@@ -78,8 +90,8 @@
     }
 }
 
-@media only screen and (min-device-width: 1024px) and (min-device-height: 1366px) and (orientation:portrait) {
-    .map-container{
+@media only screen and (min-device-width: 1024px) and (min-device-height: 1366px) and (orientation: portrait) {
+    .map-container {
         height: 60%;
         z-index: 1;
     }
@@ -92,15 +104,27 @@
         transform: scale(1.3);
         left: 12%;
     }
+
+    .enter-data-popup > div > div > button {
+        transform: scale(1.5);
+    }
+
+    .login-buttons-container > button {
+        transform: scale(1.5);
+    }
+
+    .enter-predicate-data-popup {
+        width: 70%;
+    }
 }
 
-@media only screen and (max-device-width: 640px) and (orientation:landscape) {
+@media only screen and (max-device-width: 640px) and (orientation: landscape) {
     .map-container {
         height: 90%;
     }
 }
 
-@media only screen and (orientation:landscape) {
+@media only screen and (orientation: landscape) {
     main {
         font-size: 1em;
     }

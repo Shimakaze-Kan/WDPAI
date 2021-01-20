@@ -1,5 +1,4 @@
-@media only screen and (max-device-width: 420px)
-{
+@media only screen and (max-device-width: 420px) {
     .preview-container {
         display: none !important;
     }
@@ -21,17 +20,8 @@
     }
 }
 
-@media only screen and (max-device-width: 1366px) and (max-device-height:  1024px) and (orientation: landscape) {
+@media only screen and (max-device-width: 1366px) and (max-device-height: 1024px) and (orientation: landscape) {
     .preview-container {
         display: none !important;
     }
 }
-/*
-@media only screen and (min-device-width: 420px) and (max-device-width: 1366px) and (orientation: landscape) {
-    .add-container {
-        transform: scale(1.2);
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5em;
-    }
-}*/

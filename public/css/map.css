@@ -154,7 +154,7 @@ body {
 }
 
 
-.enter-predicate-data-popup{
+.enter-predicate-data-popup {
     position: fixed;
     top: 20%;
     left: 20%;
@@ -168,7 +168,7 @@ body {
     padding: 0.5em;
 }
 
-.update-country{
+.update-country {
     display: flex;
     flex-direction: column;
 }

@@ -17,7 +17,7 @@ jQuery(function ($) {
    $('#ban-button').click(function (){
        const urlParams = new URLSearchParams(window.location.search);
        const userId = urlParams.get('id');
-       //const userId = $('#user-id').text().substring(11);
+
        let banPeriod = {years:0, months:0, days:0, userId: userId};
        if($('#d3_graph_chart0001day').is(':checked'))
        {
@@ -36,8 +36,9 @@ jQuery(function ($) {
            url: "banUser",
            type: "POST",
            data: banPeriod,
+           dataType: "json",
            success: function (response) {
-               if(response=="success") {
+               if(response.state=="success") {
                    showMessage(true);
                    let d = new Date();
                    const year = d.getFullYear();
@@ -50,6 +51,8 @@ jQuery(function ($) {
                else
                {
                    showMessage(false);
+                   $('.alert-messages').children().text(response.message);
+                   $('.alert-messages').slideDown( 300 ).delay( 5000 ).slideUp( 400 );
                }
            },
            error: function (jqXHR, textStatus, errorThrown) {

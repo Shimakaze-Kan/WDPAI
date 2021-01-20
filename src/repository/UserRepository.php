@@ -62,8 +62,10 @@ class UserRepository extends Repository
     public function getUsersDetails(int $id)
     {
         $stmt = $this->database->connect()->prepare('
-            select about, avatar_url from users_details
-            where id=(select id_user_details from users where id=:id)
+            select about, avatar_url
+            from users_details
+            right join users u on users_details.id = u.id_user_details
+            where u.id=:id
         ');
 
         $stmt->bindParam(':id',$id,PDO::PARAM_INT);

@@ -44,7 +44,7 @@ jQuery(function ($) {
     let timersCollection = [];
     $("div[id^='trash-bin-']").each(function (index) {
         $(this).on('click', function () {
-        var parent = $(this).closest(".minimal-topic-box");
+        let parent = $(this).closest(".minimal-topic-box");
         const tmp = $(this).attr('id');
         const id = tmp.substring(10,tmp.length);
         const timer = parent.find('span[id^="timer-"]');

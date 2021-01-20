@@ -8,7 +8,7 @@ jQuery(function ($) {
     });
 
 
-var currentMousePos = { x: -1, y: -1 };
+let currentMousePos = { x: -1, y: -1 };
 $(document).mousemove(function (event) {
     currentMousePos.x = event.pageX + 30;
     currentMousePos.y = event.pageY;
@@ -46,7 +46,7 @@ $('#preview').mouseover(function (){
 
     $('#title-text').mouseover(function (){
         $('#DivToShow').text('Max title length: 50 characters');
-        var pos = $('#title-text').offset();
+        let pos = $('#title-text').offset();
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
 
@@ -56,7 +56,7 @@ $('#preview').mouseover(function (){
 
     $('#upload-text').mouseover(function (){
         $('#DivToShow').text('Max URL length: 16384 characters');
-        var pos = $('#upload-text').offset();
+        let pos = $('#upload-text').offset();
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
 
@@ -72,8 +72,8 @@ $('#preview').mouseover(function (){
     $('#submit-button').click(function (){
         if($('input[name="checkbox"]').prop('checked') || $('#upload-input').val()=="")
         {
-            var title_text = $('#title-input').val();
-            var upload_text = $('#upload-input').val();
+            let title_text = $('#title-input').val();
+            let upload_text = $('#upload-input').val();
 
             if(title_text.length > 50 || title_text.length==0)
             {
@@ -141,9 +141,9 @@ jQuery.fn.shake = function(interval,distance,times){
     interval = typeof interval == "undefined" ? 100 : interval;
     distance = typeof distance == "undefined" ? 10 : distance;
     times = typeof times == "undefined" ? 3 : times;
-    var jTarget = $(this);
+    let jTarget = $(this);
     jTarget.css('position','relative');
-    for(var iter=0;iter<(times+1);iter++){
+    for(let iter=0;iter<(times+1);iter++){
         jTarget.animate({ left: ((iter%2==0 ? distance : distance*-1))}, interval);
     }
     return jTarget.animate({ left: 0},interval);

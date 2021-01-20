@@ -21,14 +21,14 @@ input {
     z-index: 999;
 }
 
-#preview-topic-box>div>img {
+#preview-topic-box > div > img {
     height: 60%;
     width: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
 
-#preview-topic-box>div {
+#preview-topic-box > div {
     height: 90%;
     font: normal normal bold 1em Arial;
     color: #2DE79B;
@@ -49,7 +49,7 @@ input {
     justify-content: space-between;
 }
 
-main > div{
+main > div {
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
@@ -91,12 +91,24 @@ main > div{
 }
 
 @keyframes shake {
-    0% { transform: skewX(-15deg); }
-    5% { transform: skewX(15deg); }
-    10% { transform: skewX(-15deg); }
-    15% { transform: skewX(15deg); }
-    20% { transform: skewX(0deg); }
-    100% { transform: skewX(0deg); }
+    0% {
+        transform: skewX(-15deg);
+    }
+    5% {
+        transform: skewX(15deg);
+    }
+    10% {
+        transform: skewX(-15deg);
+    }
+    15% {
+        transform: skewX(15deg);
+    }
+    20% {
+        transform: skewX(0deg);
+    }
+    100% {
+        transform: skewX(0deg);
+    }
 }
 
 #messageboxq {

@@ -13,7 +13,7 @@ function showMessage(result)
     $( "#messageboxq" ).slideDown( 300 ).delay( 5000 ).slideUp( 400 );
 }
 
-    var countries = [];
+    let countries = [];
 
 
 $.getJSON( "public/json/data_json.json", function( data ) {
@@ -23,26 +23,26 @@ $.getJSON( "public/json/data_json.json", function( data ) {
 
 });
 
-var box = document.getElementById("selectCountries");
+let box = document.getElementById("selectCountries");
 countries.forEach(function(item){
-    var opt = document.createElement("option");
+    let opt = document.createElement("option");
     //opt.value = 1;
     opt.innerHTML = "sd";
     box.appendChild(opt);
 });
 
-    //var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+    //let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 
-    var names = [];
+    let names = [];
 
     jQuery(function ($) {
 
-        var countryId;
-        var currentPath;
+        let countryId;
+        let currentPath;
         let mapPathsQueue = [];
 
         $('#send-updated-country').click(function (){
-            var word = $('#new-word-input').val();
+            let word = $('#new-word-input').val();
 
             if(word=='' > word.length > 50)
             {
@@ -85,7 +85,7 @@ countries.forEach(function(item){
                 data: {id: topicId},
                 dataType: "json",
                 success: function (response) {
-                    for(var i in response) {
+                    for(let i in response) {
                         if(response[i]!=null)
                             names[i] = response[i];
                     }
@@ -106,7 +106,7 @@ countries.forEach(function(item){
             });
         };
 
-        var currentMousePos = { x: -1, y: -1 };
+        let currentMousePos = { x: -1, y: -1 };
         $(document).mousemove(function (event) {
             currentMousePos.x = event.pageX + 10;
             currentMousePos.y = event.pageY;
@@ -114,7 +114,7 @@ countries.forEach(function(item){
 
         $('path').click(function () {
             if(window.innerWidth > 420) {
-                var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
+                let country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
                 //alert(countries[country]);
                 countryId = country;
                 $('#country-name').text(countries[country].toUpperCase());
@@ -127,7 +127,7 @@ countries.forEach(function(item){
 
         $('path').mouseover(function () {
             if(window.innerWidth > 420) {
-                var country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
+                let country = jQuery(this).attr('id').toUpperCase().substring(0, 2);
                 $('#country-text').text(countries[country]);
 
 
