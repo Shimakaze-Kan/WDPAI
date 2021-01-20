@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__ . '/../repository/UserRepository.php';
+
 class AppController
 {
     private $request;
@@ -25,24 +26,19 @@ class AppController
 
     protected function isCookieSetted(): bool
     {
-        return true; //TMP
-        if(isset($_COOKIE['loginCredentials']) && !empty(isset($_COOKIE['loginCredentials'])))
-        {
+        if (isset($_COOKIE['user']) && !empty(isset($_COOKIE['user']))) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    protected function render(string $template = null, array  $variables = [])
+    protected function render(string $template = null, array $variables = [])
     {
-        $templatePath = 'public/views/'.$template.'.php';
+        $templatePath = 'public/views/' . $template . '.php';
         $output = 'file not found';
 
-        if(file_exists($templatePath))
-        {
+        if (file_exists($templatePath)) {
             extract($variables);
             ob_start();
             include $templatePath;
@@ -52,10 +48,9 @@ class AppController
         print $output;
     }
 
-    protected function checkCurrentUserActiveStatus() : void
+    protected function checkCurrentUserActiveStatus(): void
     {
-        if(isset($_SESSION['user_id']) && !$this->userRepository->getUserActiveStatus($_SESSION['user_id']))
-        {
+        if (isset($_SESSION['user_id']) && !$this->userRepository->getUserActiveStatus($_SESSION['user_id'])) {
             setcookie("user", "", time() - 3600);
             session_destroy();
         }
