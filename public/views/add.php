@@ -69,7 +69,7 @@
 
                             <div class="social-section">
                                 <i class="fas fa-heart"> 600</i>
-                                <i class="fas fa-share-square"> 101</i>
+                                <i class="fas fa-heart-broken"> 101</i>
                             </div>
                         </div>
                     </div>

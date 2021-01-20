@@ -92,7 +92,7 @@ class UserController extends AppController
             return;
         }
 
-        if(!isset($_POST['userId']) || $_POST['userId'] == $_SESSION['user_id'])
+        if(!isset($_POST['userId']) || $_POST['userId']==null || $_POST['userId'] == $_SESSION['user_id'])
         {
             echo json_encode(['state'=>'failure', 'message'=>'You cannot ban yourself']);
             return;

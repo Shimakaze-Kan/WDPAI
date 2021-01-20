@@ -236,4 +236,30 @@ class TopicController extends AppController
 
         $this->render('tea', ['title' => $topic->getTitle()]);
     }
+
+    public function rateTopic()
+    {
+        $this->checkCurrentUserActiveStatus();
+
+        if(!isset($_SESSION['user_id'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/index");
+            exit();
+        }
+
+        if(!$this->isPost() || !isset($_POST['id']) || !ctype_digit(strval($_POST['id'])) || !isset($_POST['feedback']))
+        {
+            return $this->render('featured');
+        }
+
+        $result = $this->topicRepository->rateTopic($_POST['id'], $_POST['feedback']);
+
+        if(!$result)
+        {
+            echo json_encode(['state'=>'failure', 'message'=>'Topic doesn\'t exist']);
+            exit();
+        }
+
+        echo json_encode(['state'=>'success']);
+    }
 }

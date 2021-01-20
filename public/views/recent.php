@@ -18,6 +18,7 @@
 <body>
 <div class="base-container">
     <?php include("nav.php"); ?>
+    <div class="alert-messages"><span></span></div>
     <main>
         <header>
             <div class="title-bar">
@@ -51,7 +52,7 @@
                 echo '">created by: ' . $value['author'] . '</span>
                     <div class="minimal-social-box">
                     <i class="fas fa-heart"> ' . $value['like'] . '</i>
-                    <i class="fas fa-share-square"> ' . $value['dislike'] . '</i>
+                    <i class="fas fa-heart-broken"> ' . $value['dislike'] . '</i>
                     </div>
                 </div>';
 

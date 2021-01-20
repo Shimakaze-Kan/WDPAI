@@ -18,6 +18,7 @@ Routing::post('updateCountryData', 'TopicController');
 Routing::post('getCountriesData', 'TopicController');
 Routing::post('addTopic', 'TopicController');
 Routing::post('deleteTopic', 'TopicController');
+Routing::post('rateTopic', 'TopicController');
 
 Routing::post('banUser', 'UserController');
 Routing::post('unbanUser', 'UserController');

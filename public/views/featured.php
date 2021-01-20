@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/add.css">
     <link rel="stylesheet" type="text/css" href="public/css/questions.css">
     <link rel="stylesheet" type="text/css" href="public/css/style-mobile.css">
     <link rel="stylesheet" type="text/css" href="public/css/questions-mobile.css">
@@ -18,7 +19,9 @@
 </head>
 <body>
 <div class="base-container">
+    <div class="alert-messages"><span></span></div>
     <?php include("nav.php"); ?>
+    <div id="messageboxq"></div>
     <main>
         <header>
             <div class="title-bar">
@@ -37,8 +40,8 @@
                     '<div class="title">' . $topic->getTitle() . '</div>' .
                     '<img src="' . $topic->getImgUrl() . '">' .
                     '<div class="social-section">' .
-                    '<i class="fas fa-heart">' . $topic->getLike() . '</i>' .
-                    '<i class="fas fa-share-square">' . $topic->getDislike() . '</i>' .
+                    '<i class="fas fa-heart"> ' . $topic->getLike() . '</i>' .
+                    '<i class="fas fa-heart-broken"> ' . $topic->getDislike() . '</i>' .
                     '</div> </div></div>';
             }
             ?>

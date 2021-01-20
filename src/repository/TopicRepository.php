@@ -231,4 +231,23 @@ class TopicRepository extends Repository
         return $rows;
     }
 
+    public function rateTopic(int $id, string $action = 'like')
+    {
+        $stmt = null;
+
+        if($action == 'like') {
+            $stmt = $this->database->connect()->prepare('
+                update topics set "like" = "like" + 1 where id = :id
+            ');
+        }
+        else {
+            $stmt = $this->database->connect()->prepare('
+                update topics set dislike = dislike + 1 where id = :id
+            ');
+        }
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
 }

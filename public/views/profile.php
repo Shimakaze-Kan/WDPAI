@@ -22,7 +22,7 @@
 <body>
 <div class="base-container">
     <?php include("nav.php"); ?>
-    <div class="alert-messages"><span>'.$alertMessage.'</span></div>
+    <div class="alert-messages"><span></span></div>
     <main>
         <header>
             <div class="title-bar">

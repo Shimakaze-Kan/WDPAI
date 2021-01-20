@@ -352,3 +352,11 @@ select {
     text-align: center;
     display: none;
 }
+
+i.fas.fa-heart, i.fas.fa-heart-broken {
+    cursor: pointer;
+}
+
+i.fas.fa-heart-broken {
+    color: #A915E5;
+}
