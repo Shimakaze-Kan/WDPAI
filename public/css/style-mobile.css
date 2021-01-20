@@ -9,6 +9,8 @@
 
     .login-container, .logo {
         width: 100%;
+        overflow: hidden;
+        height: auto;
     }
 
     form {
@@ -20,37 +22,41 @@
         margin: 2em;
     }
 
-    input {
+    input, textarea {
         background: #FFFFFF 0% 0% no-repeat padding-box;
-border: 3px solid #6F7173;
-border-radius: 10px;
-text-align: left;
-font: normal normal normal 1em Arial;
-line-height: 16px;
-letter-spacing: 0px;
-color: #2699FB;
-width: 85%;
-padding: 0.5em;
+        border: 3px solid #6F7173;
+        border-radius: 10px;
+        text-align: left;
+        font: normal normal normal 1em Arial;
+        line-height: 16px;
+        letter-spacing: 0px;
+        color: #2699FB;
+        width: 85%;
+        padding: 0.5em;
     }
 
     .login-caption-container {
         display: flex;
-flex-direction: column;
-text-align: left;
-align-items: center;
-font: normal normal bold 1.5em Arial;
-letter-spacing: 0px;
-color: #7A6DCE;
-width: 100%;
-margin-top: 2em;
+        flex-direction: column;
+        text-align: left;
+        align-items: center;
+        font: normal normal bold 1.5em Arial;
+        letter-spacing: 0px;
+        color: #7A6DCE;
+        width: 100%;
+        margin-top: 2em;
     }
 
     form.login {
         height: 50vh;
         width: 100%;
-        position: absolute;
-bottom: 0;
-opacity: 0.98;
+        position: fixed;
+        bottom: 0;
+        opacity: 0.98;
+        min-height: 50vh;
+        max-height: 100vh;
+        overflow: hidden;
+        height: auto;
     }
 
     .login-container {
@@ -62,14 +68,21 @@ opacity: 0.98;
 
     .logo {
         font: normal normal normal 5em Rubik;
-    position: absolute;
-    top: 25vh;
+        position: absolute;
+        top: 20%;
     }
 
-    nav {
+    #slide-nav {
 
-        width: 100vh;
-        transition: 0.5s;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        /*display: none;*/
+        visibility: hidden;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        /*transition: 0.5s;*/
     }
 
     .small-logo {
@@ -89,8 +102,8 @@ opacity: 0.98;
     select {
         font: normal normal normal 1em Arial;
         width: 90%;
-height: 2em;
-border: 3px solid #6F7173;
+        height: 2em;
+        border: 3px solid #6F7173;
     }
 
     .register-button {
@@ -99,7 +112,7 @@ border: 3px solid #6F7173;
 
     .checkbox > input {
         height: 60px;
-width: 60px;
+        width: 60px;
     }
 
     .checkbox > input:checked {
@@ -113,7 +126,7 @@ width: 60px;
     .login-buttons-container > button {
         font: normal normal bold 2em Arial;
         line-height: 2em;
-        border: 4px solid #2EFFAA ;
+        border: 4px solid #2EFFAA;
         border-radius: 15px;
     }
 
@@ -121,3 +134,250 @@ width: 60px;
         filter: none;
     }
 }
+
+@media only screen and (max-device-height: 420px) {
+    #slide-nav {
+        visibility: visible !important;
+    }
+
+    li {
+        visibility: visible !important;
+    }
+
+    ul {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    button {
+        visibility: visible !important;
+    }
+
+    .small-logo {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    #shadow-menu {
+        visibility: hidden;
+    }
+
+}
+
+@media only screen and (min-device-width: 540px) and (min-device-height: 720px) and (orientation: portrait) {
+    main {
+        font-size: 1.5em;
+    }
+
+    #slide-nav {
+
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        /*transition: 0.5s;*/
+    }
+
+    #burger {
+        visibility: visible;
+    }
+
+    li > .button {
+        font: normal normal bold 2em Arial;
+    }
+
+    .small-logo {
+        font: normal normal normal 3em Rubik;
+    }
+
+    #registration-container {
+        transform: scale(1.8);
+    }
+
+    .logo {
+        transform: rotate(-90deg);
+        translate: -25%;
+    }
+
+    .login-buttons-container > button {
+        margin: 1em auto;
+    }
+
+    .login-container {
+        scale: 2;
+    }
+
+    form.login {
+        height: unset;
+        min-height: unset;
+        transform: scale(1.7);
+    }
+}
+
+@media only screen and (min-device-height: 540px) and (min-device-width: 720px) and (orientation: landscape) {
+
+    #slide-nav {
+        position: relative;
+    }
+
+    form.login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: left;
+        width: 70%;
+        height: 40vh;
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 10px 10px #00000029;
+        border: 1px solid #707070;
+        border-radius: 26px 26px 0 26px;
+        opacity: 0.96;
+        min-width: 336px;
+        min-height: 336px;
+    }
+
+    #slide-nav {
+        visibility: visible !important;
+    }
+
+    li {
+        visibility: visible !important;
+    }
+
+    ul {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    button {
+        visibility: visible !important;
+    }
+
+    .small-logo {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    #shadow-menu {
+        visibility: hidden;
+    }
+
+    #registration-container {
+        scale: 1.5;
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-height: 1024px) and (orientation: portrait) {
+    #slide-nav {
+
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        /*transition: 0.5s;*/
+    }
+
+    #burger {
+        visibility: visible;
+    }
+
+    li > .button {
+        font: normal normal bold 2em Arial;
+    }
+
+    .small-logo {
+        font: normal normal normal 3em Rubik;
+    }
+
+    #registration-container {
+        transform: scale(1.5);
+    }
+
+    .logo {
+        transform: rotate(-90deg);
+        translate: -25%;
+    }
+
+    .login-buttons-container > button {
+        margin: 1em auto;
+    }
+
+    .login-container {
+        scale: 2;
+    }
+
+    form.login {
+        height: unset;
+        min-height: unset;
+        transform: none;
+    }
+}
+
+@media only screen and (min-device-height: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+
+    #slide-nav {
+        position: relative;
+    }
+
+    form.login {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: left;
+        width: 70%;
+        height: 40vh;
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 10px 10px #00000029;
+        border: 1px solid #707070;
+        border-radius: 26px 26px 0 26px;
+        opacity: 0.96;
+        min-width: 336px;
+        min-height: 336px;
+    }
+
+    #slide-nav {
+        visibility: visible !important;
+    }
+
+    li {
+        visibility: visible !important;
+    }
+
+    ul {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    button {
+        visibility: visible !important;
+    }
+
+    .small-logo {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    #shadow-menu {
+        visibility: hidden;
+    }
+
+    #registration-container {
+        transform: scale(1.5);
+    }
+}
+
+
+@media only screen and (max-device-width: 420px) and (orientation: portrait) {
+    li > .button {
+        font: normal normal bold 1.5em Arial;
+    }
+}
+

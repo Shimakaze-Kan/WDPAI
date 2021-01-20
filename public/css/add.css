@@ -6,17 +6,6 @@
     width: 60%;
 }
 
-.purple-button {
-    text-align: center;
-    font: normal normal bold 1em Arial;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    background: #7A6DCE 0% 0% no-repeat padding-box;
-    border-radius: 4px;
-    padding: 0.5em;
-    margin-left: 1em;
-}
-
 .add-container > div {
     display: flex;
     flex-direction: row;
@@ -26,19 +15,43 @@ input {
     padding-left: 0.5em;
 }
 
-#question-preview {
-    position: absolute;
+#preview-topic-container {
+    position: fixed;
     display: none;
     z-index: 999;
 }
 
-#question-1 {
-    min-width: 400px;
+#preview-topic-box > div > img {
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-main > div{
+#preview-topic-box > div {
+    height: 90%;
+    font: normal normal bold 1em Arial;
+    color: #2DE79B;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#preview-topic-box {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #95989A;
+    border-radius: 10px 10px 0px 10px;
+    height: 300px;
+    width: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main > div {
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     position: relative;
     width: 100%;
     height: 100%;
@@ -78,12 +91,24 @@ main > div{
 }
 
 @keyframes shake {
-    0% { transform: skewX(-15deg); }
-    5% { transform: skewX(15deg); }
-    10% { transform: skewX(-15deg); }
-    15% { transform: skewX(15deg); }
-    20% { transform: skewX(0deg); }
-    100% { transform: skewX(0deg); }
+    0% {
+        transform: skewX(-15deg);
+    }
+    5% {
+        transform: skewX(15deg);
+    }
+    10% {
+        transform: skewX(-15deg);
+    }
+    15% {
+        transform: skewX(15deg);
+    }
+    20% {
+        transform: skewX(0deg);
+    }
+    100% {
+        transform: skewX(0deg);
+    }
 }
 
 #messageboxq {
@@ -107,4 +132,8 @@ main > div{
     border-radius: 0.3em;
     padding: 0.5em;
     z-index: 999;
+}
+
+.checkbox {
+    margin: initial;
 }

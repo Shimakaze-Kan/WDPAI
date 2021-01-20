@@ -1,5 +1,4 @@
-@media only screen and (max-device-width: 420px)
-{
+@media only screen and (max-device-width: 420px) {
     .preview-container {
         display: none !important;
     }
@@ -9,4 +8,20 @@
         padding: 0.4em;
     }
 
+    .add-container {
+        width: auto;
+    }
+
+}
+
+@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) and (orientation: portrait) {
+    .preview-container {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-device-width: 1366px) and (max-device-height: 1024px) and (orientation: landscape) {
+    .preview-container {
+        display: none !important;
+    }
 }

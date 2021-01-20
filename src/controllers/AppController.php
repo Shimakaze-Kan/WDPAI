@@ -1,13 +1,16 @@
 <?php
 
+require_once __DIR__.'/../repository/UserRepository.php';
 class AppController
 {
     private $request;
+    private $userRepository;
 
     public function __construct()
     {
         session_start();
         $this->request = $_SERVER['REQUEST_METHOD'];
+        $this->userRepository = new UserRepository();
     }
 
     protected function isGet(): bool
@@ -47,5 +50,14 @@ class AppController
         }
 
         print $output;
+    }
+
+    protected function checkCurrentUserActiveStatus() : void
+    {
+        if(isset($_SESSION['user_id']) && !$this->userRepository->getUserActiveStatus($_SESSION['user_id']))
+        {
+            setcookie("user", "", time() - 3600);
+            session_destroy();
+        }
     }
 }

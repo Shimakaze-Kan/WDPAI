@@ -8,41 +8,59 @@ jQuery(function ($) {
     });
 
 
-var currentMousePos = { x: -1, y: -1 };
+let currentMousePos = { x: -1, y: -1 };
 $(document).mousemove(function (event) {
-    currentMousePos.x = event.pageX + 10;
+    currentMousePos.x = event.pageX + 30;
     currentMousePos.y = event.pageY;
 });
 
+const TOPIC_PREVIEW_HEIGHT = 300;
+
 $('#preview').mouseover(function (){
-    $('#question-preview').css({ 'top': currentMousePos.y, 'left': currentMousePos.x }).fadeIn('fast');
+    let yPos = currentMousePos.y;
+
+    if(yPos+TOPIC_PREVIEW_HEIGHT>window.innerHeight)
+    {
+        $('#preview-topic-container').css({ 'top': currentMousePos.y-TOPIC_PREVIEW_HEIGHT, 'left': currentMousePos.x }).fadeIn('fast');
+    }
+    else {
+        $('#preview-topic-container').css({'top': currentMousePos.y, 'left': currentMousePos.x}).fadeIn('fast');
+    }
 });
 
-    $('#preview').mouseout(function () {
-        $('#question-preview').fadeOut('fast'); //.css({ 'display': 'none' });
+    $('#preview').mouseleave(function () {
+        $('#preview-topic-container').fadeOut('fast'); //.css({ 'display': 'none' });
     });
 
     $('#preview').mousemove(function () {
-        $('#question-preview').css({ 'top': currentMousePos.y, 'left': currentMousePos.x });
+        let yPos = currentMousePos.y;
+
+        if(yPos+TOPIC_PREVIEW_HEIGHT>window.innerHeight)
+        {
+            $('#preview-topic-container').css({ 'top': currentMousePos.y-TOPIC_PREVIEW_HEIGHT, 'left': currentMousePos.x });
+        }
+        else {
+            $('#preview-topic-container').css({'top': currentMousePos.y, 'left': currentMousePos.x});
+        }
     });
 
     $('#title-text').mouseover(function (){
         $('#DivToShow').text('Max title length: 50 characters');
-        var pos = $('#title-text').offset();
+        let pos = $('#title-text').offset();
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
 
-    $('#title-text').mouseout(function () {
+    $('#title-text').mouseleave(function () {
         $('#DivToShow').fadeOut('fast'); //.css({ 'display': 'none' });
     });
 
     $('#upload-text').mouseover(function (){
-        $('#DivToShow').text('Max URL length: 255 characters');
-        var pos = $('#upload-text').offset();
+        $('#DivToShow').text('Max URL length: 16384 characters');
+        let pos = $('#upload-text').offset();
         $('#DivToShow').css({ 'top': pos.top, 'left': pos.left }).fadeIn('fast');
     });
 
-    $('#upload-text').mouseout(function () {
+    $('#upload-text').mouseleave(function () {
         $('#DivToShow').hide(); //.css({ 'display': 'none' });
     });
 
@@ -52,19 +70,21 @@ $('#preview').mouseover(function (){
 
 
     $('#submit-button').click(function (){
-        if($('input[name="checkbox"]').prop('checked'))
+        if($('input[name="checkbox"]').prop('checked') || $('#upload-input').val()=="")
         {
-            var title_text = $('#title-input').val();
-            var upload_text = $('#upload-input').val();
+            let title_text = $('#title-input').val();
+            let upload_text = $('#upload-input').val();
 
-            if(title_text.length > 50)
+            if(title_text.length > 50 || title_text.length==0)
             {
-                $('#title-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+                $('#title-input').shake();
+                $('#title-text').shake();
                 showMessage(false);
             }
-            else if(upload_text.length > 255)
+            else if(upload_text.length > 16384)
             {
-                $('#upload-input').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+                $('#upload-input').shake();
+                $('#upload-text').shake();
                 showMessage(false);
             }
             else {
@@ -72,15 +92,19 @@ $('#preview').mouseover(function (){
                     url: "addTopic",
                     type: "POST",
                     data: {title: title_text, url: upload_text},
+                    dataType: "json",
                     success: function (response) {
-                        if(response == 'failure')
+                        if(response.state == 'failure')
                         {
-                            showMessage(true);
+                            showMessage(false);
+                            $('.alert-messages').children().text(response.message);
+                            $('.alert-messages').slideDown( 300 ).delay( 5000 ).slideUp( 400 );
                         }
                         else
                         {
-                            var url = response.substring(8, response.length);
-                            window.location=url;
+                            if('url' in response) {
+                                window.location = response.url;
+                            }
                         }
 
                     },
@@ -92,7 +116,7 @@ $('#preview').mouseover(function (){
         }
         else
         {
-            $('.checkbox').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+            $('.checkbox').shake();
             showMessage(false);
         }
     });
@@ -111,4 +135,16 @@ function showMessage(result)
         $('#messageboxq').css("background-color"," rgba(240, 52, 52, 0.9)");
     }
     $( "#messageboxq" ).slideDown( 300 ).delay( 5000 ).slideUp( 400 );
+}
+
+jQuery.fn.shake = function(interval,distance,times){
+    interval = typeof interval == "undefined" ? 100 : interval;
+    distance = typeof distance == "undefined" ? 10 : distance;
+    times = typeof times == "undefined" ? 3 : times;
+    let jTarget = $(this);
+    jTarget.css('position','relative');
+    for(let iter=0;iter<(times+1);iter++){
+        jTarget.animate({ left: ((iter%2==0 ? distance : distance*-1))}, interval);
+    }
+    return jTarget.animate({ left: 0},interval);
 }

@@ -62,8 +62,8 @@ circle:hover {
 
 .enter-data-popup {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 20%;
+    left: 20%;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 10px 10px #00000029;
     border: 1px solid #707070;
@@ -71,11 +71,104 @@ circle:hover {
     opacity: 0.96;
     min-width: 336px;
     font: normal normal normal 2em Rubik;
+    padding: 0.5em
+}
+
+.login-buttons-container {
+    margin-top: 1em;
+}
+
+#new-word-input {
+    width: 100%;
+}
+
+.purple-button {
+    text-align: center;
+    font: normal normal bold 1em Arial;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    background: #7A6DCE 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    padding: 0.5em;
+    margin-left: 1em;
+}
+
+#buttons-container {
+    position: absolute;
+    top: 3.1em;
+    margin-top: 1em;
+    z-index: 999;
+}
+
+#data-table {
+    display: none;
+    background: whitesmoke;
+    position: fixed;
+    top: 7em;
+    margin-top: 1em;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 0.2em solid #2DE79B;
+    font: normal normal normal 1em Rubik;
+    background-color: #f7f7f7;
+}
+
+th, td {
+    text-align: left;
+    padding: 1em;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:first-of-type {
+    border-bottom: 0.01em solid black;
+}
+
+tr:first-of-type > td:nth-child(3) {
+    display: flex;
+    flex-direction: row;
+}
+
+tr:first-of-type > td:nth-child(3) > span {
+    margin: auto;
+}
+
+tr:hover {
+    background-color: #F8F8FF;
+}
+
+tr:first-of-type:hover {
+    background-color: #f7f7f7;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+.enter-predicate-data-popup {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 10px 10px #00000029;
+    border: 1px solid #707070;
+    border-radius: 26px 26px 0 26px;
+    opacity: 0.96;
+    min-width: 336px;
+    font: normal normal normal 2em Rubik;
+    padding: 0.5em;
 }
 
 .update-country {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
 }
